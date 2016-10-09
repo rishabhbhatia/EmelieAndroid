@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.view.View;
@@ -28,14 +27,6 @@ import com.satiate.emelie.ui.fragments.CommonFragment;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS1_TRANSITION_NAME;
-import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS2_TRANSITION_NAME;
-import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS3_TRANSITION_NAME;
-import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS4_TRANSITION_NAME;
-import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS5_TRANSITION_NAME;
-import static com.satiate.emelie.ui.activities.HomeDetailActivity.IMAGE_TRANSITION_NAME;
-import static com.satiate.emelie.ui.activities.HomeDetailActivity.RATINGBAR_TRANSITION_NAME;
 
 public class HomeActivity extends FragmentActivity {
 
@@ -110,18 +101,12 @@ public class HomeActivity extends FragmentActivity {
         updateIndicatorTv();
     }
 
-    /**
-     * 更新指示器
-     */
     private void updateIndicatorTv() {
         int totalNum = viewPager.getAdapter().getCount();
         int currentItem = viewPager.getCurrentItem() + 1;
         indicatorTv.setText(Html.fromHtml("<font color='#12edf0'>" + currentItem + "</font>  /  " + totalNum));
     }
 
-    /**
-     * 调整沉浸式菜单的title
-     */
     private void dealStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             int statusBarHeight = getStatusBarHeight();
@@ -153,24 +138,19 @@ public class HomeActivity extends FragmentActivity {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
                 this)
                 .memoryCacheExtraOptions(480, 800)
-                // default = device screen dimensions
                 .threadPoolSize(3)
-                // default
                 .threadPriority(Thread.NORM_PRIORITY - 1)
-                // default
                 .tasksProcessingOrder(QueueProcessingType.FIFO)
-                // default
                 .denyCacheImageMultipleSizesInMemory()
                 .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
-                .memoryCacheSize(2 * 1024 * 1024).memoryCacheSizePercentage(13) // default
-                .discCacheSize(50 * 1024 * 1024) // 缓冲大小
-                .discCacheFileCount(100) // 缓冲文件数目
-                .discCacheFileNameGenerator(new HashCodeFileNameGenerator()) // default
-                .imageDownloader(new BaseImageDownloader(this)) // default
-                .defaultDisplayImageOptions(DisplayImageOptions.createSimple()) // default
+                .memoryCacheSize(2 * 1024 * 1024).memoryCacheSizePercentage(13)
+                .discCacheSize(50 * 1024 * 1024)
+                .discCacheFileCount(100)
+                .discCacheFileNameGenerator(new HashCodeFileNameGenerator())
+                .imageDownloader(new BaseImageDownloader(this))
+                .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
                 .writeDebugLogs().build();
 
-        // 2.单例ImageLoader类的初始化
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(config);
     }
