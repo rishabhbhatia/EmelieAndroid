@@ -19,6 +19,6 @@ public class SplashActivity extends AppCompatActivity {
     {
         Intent homeIntent = new Intent(SplashActivity.this, HomeActivity.class);
         startActivity(homeIntent);
-
+        finish();
     }
 }
