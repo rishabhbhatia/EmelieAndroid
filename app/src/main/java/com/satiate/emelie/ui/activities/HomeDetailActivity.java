@@ -1,8 +1,11 @@
 package com.satiate.emelie.ui.activities;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewCompat;
 import android.util.Log;
@@ -46,6 +49,8 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     public static final String HEAD3_TRANSITION_NAME = "head3";
     public static final String HEAD4_TRANSITION_NAME = "head4";
 
+    private boolean shouldFinish = false;
+
     @BindView(R.id.image)
     ImageView image;
     @BindView(R.id.address1)
@@ -82,15 +87,6 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
         Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this,
                 HomeDetailActivity.class));
 
-        /*imageView = (ImageView) findViewById(R.id.image);
-        address1 = findViewById(R.id.address1);
-        address2 = findViewById(R.id.address2);
-        address3 = findViewById(R.id.address3);
-        address4 = findViewById(R.id.address4);
-        address5 = findViewById(R.id.address5);
-        ratingBar = (RatingBar) findViewById(R.id.rating);
-        listContainer = (LinearLayout) findViewById(R.id.detail_list_container);*/
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             window.setFlags(
@@ -125,7 +121,8 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     private void dealListView() {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++)
+        {
             View childView = layoutInflater.inflate(R.layout.home_detail_list_item, null);
             detailListContainer.addView(childView);
             ImageView headView = (ImageView) childView.findViewById(R.id.head);
@@ -171,8 +168,30 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
         if(motionEvent1.getAxisValue(1) - motionEvent.getAxisValue(1) > 250)
         {
             Log.d(Const.TAG, "hi i flinged down");
-            HomeDetailActivity.this.finish();
+            onBackPressed();
         }
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBackToHome();
+//        super.onBackPressed();
+    }
+
+    public void goBackToHome()
+    {
+        shouldFinish = true;
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeDetailActivity.this, null);
+        Intent intent = new Intent(HomeDetailActivity.this, HomeActivity.class);
+        ActivityCompat.startActivity(HomeDetailActivity.this, intent, options.toBundle());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (shouldFinish) {
+            HomeDetailActivity.this.finish();
+        }
     }
 }

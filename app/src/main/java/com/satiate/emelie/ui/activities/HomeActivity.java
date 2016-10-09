@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.view.View;
@@ -28,6 +29,14 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS1_TRANSITION_NAME;
+import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS2_TRANSITION_NAME;
+import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS3_TRANSITION_NAME;
+import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS4_TRANSITION_NAME;
+import static com.satiate.emelie.ui.activities.HomeDetailActivity.ADDRESS5_TRANSITION_NAME;
+import static com.satiate.emelie.ui.activities.HomeDetailActivity.IMAGE_TRANSITION_NAME;
+import static com.satiate.emelie.ui.activities.HomeDetailActivity.RATINGBAR_TRANSITION_NAME;
+
 public class HomeActivity extends FragmentActivity {
 
     private TextView indicatorTv;
@@ -49,6 +58,7 @@ public class HomeActivity extends FragmentActivity {
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
         positionView = findViewById(R.id.position_view);
+
         dealStatusBar();
         initImageLoader();
         fillViewPager();
