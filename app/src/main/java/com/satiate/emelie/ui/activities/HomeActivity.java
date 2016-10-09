@@ -1,17 +1,15 @@
 package com.satiate.emelie.ui.activities;
 
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -26,9 +24,9 @@ import com.satiate.emelie.R;
 import com.satiate.emelie.adapters.HomePagerTransformer;
 import com.satiate.emelie.ui.fragments.CommonFragment;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.reflect.Field;
 
 public class HomeActivity extends FragmentActivity {
 
