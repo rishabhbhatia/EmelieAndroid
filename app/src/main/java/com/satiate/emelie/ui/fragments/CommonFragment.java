@@ -16,7 +16,6 @@ import android.widget.RatingBar;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.satiate.emelie.R;
-import com.satiate.emelie.ui.activities.HomeActivity;
 import com.satiate.emelie.ui.activities.HomeDetailActivity;
 import com.satiate.emelie.utils.DragLayout;
 
