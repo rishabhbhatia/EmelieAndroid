@@ -116,7 +116,8 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 Log.d(Const.TAG, "gesture detector is setup");
-                return gestureScanner.onTouchEvent(motionEvent);
+                gestureScanner.onTouchEvent(motionEvent);
+                return true;
             }
         });
     }
@@ -165,6 +166,13 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     @Override
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
         Log.d(Const.TAG, "hello motion event: " + motionEvent + " to " + motionEvent1);
+
+        //motionEvent1 - motionEvent means swiping from top to down
+        if(motionEvent1.getAxisValue(1) - motionEvent.getAxisValue(1) > 250)
+        {
+            Log.d(Const.TAG, "hi i flinged down");
+            HomeDetailActivity.this.finish();
+        }
         return false;
     }
 }
