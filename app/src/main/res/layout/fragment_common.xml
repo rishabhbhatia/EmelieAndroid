@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <com.satiate.emelie.utils.DragLayout
         android:id="@+id/drag_layout"
         android:layout_width="match_parent"
@@ -12,8 +16,9 @@
         app:bottomDragVisibleHeight="@dimen/card_bottom_info_height">
 
         <FrameLayout
+            android:id="@+id/frame_home_card_container"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:alpha="0"
             android:background="@drawable/white_back">
@@ -23,6 +28,8 @@
                 android:layout_height="@dimen/card_bottom_info_height"
                 android:layout_gravity="bottom"
                 android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -41,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -127,56 +134,67 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/card_extra_height"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:cardCornerRadius="5dp"
-            app:cardElevation="6dp"
-            app:cardMaxElevation="6dp">
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY" />
+            app:cardElevation="7dp"
+            app:cardMaxElevation="7dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/address1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="NORTH LAT"
-                    android:textColor="#12edf0"
-                    android:textSize="15sp" />
+                android:layout_height="match_parent"
+                >
 
                 <ImageView
-                    android:id="@+id/address2"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_centerInParent="true"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/gps" />
+                    android:id="@+id/image"
+                    android:layout_above="@+id/rl_home_footer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
 
-                <TextView
-                    android:id="@+id/address3"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/rl_home_footer"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="EAST LNG 17"
-                    android:textColor="#12edf0"
-                    android:textSize="13sp" />
+                    android:layout_alignParentBottom="true"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/address1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="NORTH LAT"
+                        android:textColor="#12edf0"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/address2"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/gps" />
+
+                    <TextView
+                        android:id="@+id/address3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="EAST LNG 17"
+                        android:textColor="#12edf0"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
 
             </RelativeLayout>
 
         </com.satiate.emelie.utils.AspectRatioCardView>
 
     </com.satiate.emelie.utils.DragLayout>
+
+    </LinearLayout>
+
 
 </FrameLayout>
