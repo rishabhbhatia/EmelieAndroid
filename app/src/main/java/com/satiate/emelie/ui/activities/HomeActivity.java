@@ -103,7 +103,7 @@ public class HomeActivity extends FragmentActivity {
     private void updateIndicatorTv() {
         int totalNum = viewPager.getAdapter().getCount();
         int currentItem = viewPager.getCurrentItem() + 1;
-        indicatorTv.setText(Html.fromHtml("<font color='#12edf0'>" + currentItem + "</font>  /  " + totalNum));
+        indicatorTv.setText(Html.fromHtml("<font color='#000000'>" + currentItem + "</font>  /  " + totalNum));
     }
 
     private void dealStatusBar() {
