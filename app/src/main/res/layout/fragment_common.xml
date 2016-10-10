@@ -159,15 +159,6 @@
                     android:layout_alignParentBottom="true"
                     android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/address1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="NORTH LAT"
-                        android:textColor="#12edf0"
-                        android:textSize="15sp" />
-
                     <ImageView
                         android:id="@+id/address2"
                         android:layout_width="22dp"
