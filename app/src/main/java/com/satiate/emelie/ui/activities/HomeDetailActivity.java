@@ -17,7 +17,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -57,8 +56,6 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
 
     @BindView(R.id.image)
     ImageView image;
-    @BindView(R.id.rating)
-    RatingBar rating;
     @BindView(R.id.detail_list_container)
     LinearLayout detailListContainer;
     @BindView(R.id.ll_home_details_container)
@@ -94,7 +91,6 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
         ViewCompat.setTransitionName(image, IMAGE_TRANSITION_NAME);
         ViewCompat.setTransitionName(tvHomeFooterName, FOOTER_NAME_TRANSITION_NAME);
         ViewCompat.setTransitionName(image, FOOTER_AGE_TRANSITION_NAME);
-        ViewCompat.setTransitionName(rating, RATINGBAR_TRANSITION_NAME);
 
         dealListView();
 

@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -34,8 +33,6 @@ import butterknife.ButterKnife;
 public class CommonFragment extends Fragment implements DragLayout.GotoDetailListener {
 
 
-    @BindView(R.id.rating)
-    RatingBar rating;
     @BindView(R.id.head1)
     ImageView head1;
     @BindView(R.id.head2)
@@ -78,7 +75,6 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
         Activity activity = (Activity) getContext();
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
                 new Pair(image, HomeDetailActivity.IMAGE_TRANSITION_NAME),
-                new Pair(rating, HomeDetailActivity.RATINGBAR_TRANSITION_NAME),
                 new Pair(head1, HomeDetailActivity.HEAD1_TRANSITION_NAME),
                 new Pair(head2, HomeDetailActivity.HEAD2_TRANSITION_NAME),
                 new Pair(head3, HomeDetailActivity.HEAD3_TRANSITION_NAME),

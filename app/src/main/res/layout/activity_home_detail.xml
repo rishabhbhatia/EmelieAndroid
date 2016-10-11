@@ -36,6 +36,8 @@
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
                 android:paddingStart="15dp"
+                android:paddingRight="15dp"
+                android:paddingEnd="15dp"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 >
@@ -136,15 +138,6 @@
                 android:background="@drawable/paper_background"
                 android:orientation="vertical"
                 android:padding="20dp">
-
-                <RatingBar
-                    android:id="@+id/rating"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:numStars="5"
-                    android:rating="4.5" />
 
             </LinearLayout>
 

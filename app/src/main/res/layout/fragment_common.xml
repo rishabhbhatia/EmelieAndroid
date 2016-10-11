@@ -35,27 +35,62 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        >
 
-                        <RatingBar
-                            android:id="@+id/rating"
-                            style="?android:attr/ratingBarStyleSmall"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:numStars="5"
-                            android:rating="4.5" />
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            >
+
+                            <TextView
+                                android:id="@+id/iv_home_detail_like"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Like"
+                                android:drawablePadding="5dp"
+                                android:drawableLeft="@drawable/ic_like"
+                                android:drawableStart="@drawable/ic_like"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            >
+
+                            <TextView
+                                android:id="@+id/iv_home_detail_comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="5dp"
+                                android:text="Comment"
+                                android:drawableLeft="@drawable/ic_comment"
+                                android:drawableStart="@drawable/ic_comment"
+                                />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:layout_marginTop="10dp"
-                        android:background="#f0f0f0" />
+                        android:layout_height="0.5dp"
+                        android:background="@color/divider"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:visibility="gone"
+                        />
 
                     <LinearLayout
                         android:layout_width="match_parent"
