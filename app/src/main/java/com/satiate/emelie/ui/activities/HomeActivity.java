@@ -181,6 +181,7 @@ public class HomeActivity extends FragmentActivity {
 
     private void removeFragmentFromViewPager(Fragment fragment) {
 
+        //TODO handle when element is last, then no +1 is available & if size is 0 then no+1 available
         final int currentPosition = viewPager.getCurrentItem();
 
         viewPager.getAdapter().destroyItem(viewPager, currentPosition, fragment);

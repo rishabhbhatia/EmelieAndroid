@@ -47,6 +47,37 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/indicator_tv"
+        >
+
+        <ImageView
+            android:background="@drawable/circle_bg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_like"
+            android:padding="10dp"
+            />
+
+        <ImageView
+            android:background="@drawable/circle_bg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_comment"
+            android:padding="10dp"
+            />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/indicator_tv"
         android:layout_width="wrap_content"
@@ -57,7 +88,7 @@
         android:text="1/199"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        android:visibility="gone"/>
+        android:visibility="invisible"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
