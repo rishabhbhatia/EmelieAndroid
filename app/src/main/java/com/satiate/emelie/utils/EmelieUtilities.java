@@ -25,4 +25,10 @@ public class EmelieUtilities {
         return new Random().nextInt((max - min) + 1) + min;
     }
 
+    public static String getRandomGender()
+    {
+        String[] sexArray = {"M", "F"};
+        return sexArray[new Random().nextInt(sexArray.length)];
+    }
+
 }
