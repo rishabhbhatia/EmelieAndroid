@@ -196,23 +196,7 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
 
     @Override
     public void onBackPressed() {
-        goBackToHome();
-//        super.onBackPressed();
-    }
-
-    public void goBackToHome() {
-        shouldFinish = true;
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeDetailActivity.this, null);
-        Intent intent = new Intent(HomeDetailActivity.this, HomeActivity.class);
-        ActivityCompat.startActivity(HomeDetailActivity.this, intent, options.toBundle());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (shouldFinish) {
-            HomeDetailActivity.this.finish();
-        }
+        super.onBackPressed();
     }
 
 }
