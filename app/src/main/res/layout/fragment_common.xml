@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:alpha="0"
+                android:alpha="1"
                 android:background="@drawable/white_back">
 
                 <LinearLayout
@@ -48,7 +48,7 @@
                             >
 
                             <TextView
-                                android:id="@+id/iv_home_detail_like"
+                                android:id="@+id/iv_home_like"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Like"
@@ -66,7 +66,7 @@
                             >
 
                             <TextView
-                                android:id="@+id/iv_home_detail_comment"
+                                android:id="@+id/iv_home_comment"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:drawablePadding="5dp"
@@ -83,14 +83,45 @@
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:background="@color/divider"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginEnd="10dp"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_home_views"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="25.4k views"
+                            android:textSize="14sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginEnd="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_home_comments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="25 comments"
+                            android:textSize="14sp"
+                            />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -152,7 +183,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 app:cardCornerRadius="5dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:cardElevation="7dp"
                 app:cardMaxElevation="7dp">
 
