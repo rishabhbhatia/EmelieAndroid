@@ -34,7 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp"
+                android:paddingLeft="15dp"
+                android:paddingStart="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 >
 
                 <LinearLayout
@@ -81,6 +84,14 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
+                />
+
             <TextView
                 android:id="@+id/tv_home_footer_name"
                 android:layout_width="match_parent"
@@ -89,6 +100,9 @@
                 android:ellipsize="end"
                 android:text="Rishabh Bhatia"
                 android:textSize="17sp"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:layout_marginTop="5dp"
                 />
 
             <TextView
@@ -99,6 +113,8 @@
                 android:ellipsize="end"
                 android:text="24 years"
                 android:textSize="15sp"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
                 />
 
         </LinearLayout>
