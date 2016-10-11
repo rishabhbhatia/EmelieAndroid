@@ -1,5 +1,8 @@
 package com.satiate.emelie.utils;
 
+import com.satiate.emelie.models.User;
+import com.satiate.emelie.ui.activities.HomeActivity;
+
 import java.util.Random;
 
 /**
@@ -29,6 +32,16 @@ public class EmelieUtilities {
     {
         String[] sexArray = {"M", "F"};
         return sexArray[new Random().nextInt(sexArray.length)];
+    }
+
+    public static User generateRandomUser()
+    {
+        User user = new User();
+        user.setName(generateRandomStrings(5)+" "+generateRandomStrings(3));
+        user.setAge(generateRandomAge(17, 30));
+        user.setImageUrl(HomeActivity.randomImageUrl);
+
+        return user;
     }
 
 }

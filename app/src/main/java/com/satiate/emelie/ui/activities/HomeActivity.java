@@ -22,7 +22,9 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.satiate.emelie.R;
 import com.satiate.emelie.adapters.HomePagerTransformer;
+import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.fragments.CommonFragment;
+import com.satiate.emelie.utils.EmelieUtilities;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class HomeActivity extends FragmentActivity {
     private View positionView;
     private ViewPager viewPager;
     private List<CommonFragment> fragments = new ArrayList<>();
-    private final String randomImageUrl = "https://unsplash.it/200/300/?random";
+    public static final String randomImageUrl = "https://unsplash.it/200/300/?random";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,8 @@ public class HomeActivity extends FragmentActivity {
             @Override
             public Fragment getItem(int position) {
                 CommonFragment fragment = fragments.get(position % 10);
-                fragment.bindData(randomImageUrl);
+                User user = EmelieUtilities.generateRandomUser();
+                fragment.bindData(user);
                 return fragment;
             }
 

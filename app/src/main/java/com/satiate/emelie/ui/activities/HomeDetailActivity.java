@@ -37,11 +37,6 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     public static final String EXTRA_IMAGE_URL = "detailImageUrl";
 
     public static final String IMAGE_TRANSITION_NAME = "transitionImage";
-    public static final String ADDRESS1_TRANSITION_NAME = "address1";
-    public static final String ADDRESS2_TRANSITION_NAME = "address2";
-    public static final String ADDRESS3_TRANSITION_NAME = "address3";
-    public static final String ADDRESS4_TRANSITION_NAME = "address4";
-    public static final String ADDRESS5_TRANSITION_NAME = "address5";
     public static final String RATINGBAR_TRANSITION_NAME = "ratingBar";
 
     public static final String HEAD1_TRANSITION_NAME = "head1";
@@ -49,20 +44,19 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     public static final String HEAD3_TRANSITION_NAME = "head3";
     public static final String HEAD4_TRANSITION_NAME = "head4";
 
+    public static final String FOOTER_NAME_TRANSITION_NAME = "name";
+    public static final String FOOTER_AGE_TRANSITION_NAME = "age";
+    @BindView(R.id.tv_home_footer_name)
+    TextView tvHomeFooterName;
+    @BindView(R.id.tv_home_footer_age)
+    TextView tvHomeFooterAge;
+    @BindView(R.id.ll_home_footer)
+    LinearLayout llHomeFooter;
+
     private boolean shouldFinish = false;
 
     @BindView(R.id.image)
     ImageView image;
-    @BindView(R.id.address1)
-    TextView address1;
-    @BindView(R.id.address2)
-    ImageView address2;
-    @BindView(R.id.address3)
-    TextView address3;
-    @BindView(R.id.address4)
-    TextView address4;
-    @BindView(R.id.address5)
-    TextView address5;
     @BindView(R.id.rating)
     RatingBar rating;
     @BindView(R.id.detail_list_container)
@@ -98,11 +92,8 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
         ImageLoader.getInstance().displayImage(imageUrl, image);
 
         ViewCompat.setTransitionName(image, IMAGE_TRANSITION_NAME);
-        ViewCompat.setTransitionName(address1, ADDRESS1_TRANSITION_NAME);
-        ViewCompat.setTransitionName(address2, ADDRESS2_TRANSITION_NAME);
-        ViewCompat.setTransitionName(address3, ADDRESS3_TRANSITION_NAME);
-        ViewCompat.setTransitionName(address4, ADDRESS4_TRANSITION_NAME);
-        ViewCompat.setTransitionName(address5, ADDRESS5_TRANSITION_NAME);
+        ViewCompat.setTransitionName(tvHomeFooterName, FOOTER_NAME_TRANSITION_NAME);
+        ViewCompat.setTransitionName(image, FOOTER_AGE_TRANSITION_NAME);
         ViewCompat.setTransitionName(rating, RATINGBAR_TRANSITION_NAME);
 
         dealListView();
@@ -121,8 +112,7 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     private void dealListView() {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
 
-        for (int i = 0; i < 20; i++)
-        {
+        for (int i = 0; i < 20; i++) {
             View childView = layoutInflater.inflate(R.layout.home_detail_list_item, null);
             detailListContainer.addView(childView);
             ImageView headView = (ImageView) childView.findViewById(R.id.head);
@@ -165,8 +155,7 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
         Log.d(Const.TAG, "hello motion event: " + motionEvent + " to " + motionEvent1);
 
         //motionEvent1 - motionEvent means swiping from top to down
-        if(motionEvent1.getAxisValue(1) - motionEvent.getAxisValue(1) > 250)
-        {
+        if (motionEvent1.getAxisValue(1) - motionEvent.getAxisValue(1) > 250) {
             Log.d(Const.TAG, "hi i flinged down");
             onBackPressed();
         }
@@ -179,8 +168,7 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
 //        super.onBackPressed();
     }
 
-    public void goBackToHome()
-    {
+    public void goBackToHome() {
         shouldFinish = true;
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeDetailActivity.this, null);
         Intent intent = new Intent(HomeDetailActivity.this, HomeActivity.class);

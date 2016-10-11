@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:id="@+id/ll_home_details_container"
-    >
+    android:id="@+id/ll_home_details_container">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -16,43 +16,52 @@
             android:layout_height="200dp"
             android:scaleType="centerCrop" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/ll_home_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_gravity="bottom"
+            android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="5dp">
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
+            >
 
             <TextView
-                android:id="@+id/address1"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_home_footer_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="NORTH LAT"
-                android:textColor="#12edf0"
-                android:textSize="15sp" />
-
-            <ImageView
-                android:id="@+id/address2"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_centerInParent="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/gps" />
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="Rishabh Bhatia"
+                android:textSize="17sp"
+                />
 
             <TextView
-                android:id="@+id/address3"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_home_footer_age"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="EAST LNG 17"
-                android:textColor="#12edf0"
-                android:textSize="13sp" />
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="24 years"
+                android:textSize="15sp"
+                />
 
-        </RelativeLayout>
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_like_active"
+                app:civ_shadow="true"
+                app:civ_shadow_radius="10"
+                android:visibility="gone"
+                android:layout_margin="10dp"
+                app:civ_shadow_color="#40000000"/>
+
+
+        </LinearLayout>
 
     </FrameLayout>
 
@@ -71,25 +80,6 @@
                 android:background="@drawable/paper_background"
                 android:orientation="vertical"
                 android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/address4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="La Crescenta-Montrose, CA91020 Glendale"
-                    android:textColor="#333"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/address5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="NO. 7911847"
-                    android:textColor="#333"
-                    android:textSize="15sp" />
 
                 <RatingBar
                     android:id="@+id/rating"
