@@ -138,7 +138,7 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     {
         ImageLoader.getInstance().displayImage(user.getImageUrl(), image);
         tvHomeFooterName.setText(user.getName());
-        tvHomeFooterAge.setText(user.getAge()+"");
+        tvHomeFooterAge.setText(user.getAge()+" years");
     }
 
     private void dealListView() {

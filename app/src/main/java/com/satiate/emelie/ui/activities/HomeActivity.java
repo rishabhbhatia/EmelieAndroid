@@ -79,7 +79,7 @@ public class HomeActivity extends FragmentActivity {
 
             @Override
             public int getCount() {
-                return 666;
+                return 60;
             }
         });
 

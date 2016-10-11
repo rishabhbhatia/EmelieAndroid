@@ -86,7 +86,7 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
     {
         ImageLoader.getInstance().displayImage(user.getImageUrl(), image);
         tvHomeFooterName.setText(user.getName());
-        tvHomeFooterAge.setText(user.getAge()+" ");
+        tvHomeFooterAge.setText(user.getAge()+" years");
     }
 
     @Override
