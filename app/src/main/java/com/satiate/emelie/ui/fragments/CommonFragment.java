@@ -75,7 +75,7 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
 
         View rootView = inflater.inflate(R.layout.fragment_common, null);
         ButterKnife.bind(this, rootView);
-        dragLayout.setGotoDetailListener(this);
+        dragLayout.setGotoDetailListener(this, CommonFragment.this);
 
         populateScreen();
 

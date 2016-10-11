@@ -7,6 +7,7 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +15,10 @@ import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 
 import com.satiate.emelie.R;
+import com.satiate.emelie.events.DragToRemoveUser;
+import com.satiate.emelie.ui.fragments.CommonFragment;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by Rishabh Bhatia on 10/9/2016.
@@ -33,15 +38,16 @@ public class DragLayout extends FrameLayout {
 
     private static final int STATE_CLOSE = 1;
     private static final int STATE_EXPANDED = 2;
-    private int downState; // 按下时的状态
+    private int downState;
 
     private final ViewDragHelper mDragHelper;
     private final GestureDetectorCompat moveDetector;
-    private int mTouchSlop = 5; // 判定为滑动的阈值，单位是像素
-    private int originX, originY; // 初始状态下，topView的坐标
-    private View bottomView, topView; // FrameLayout的两个子View
+    private int mTouchSlop = 5;
+    private int originX, originY;
+    private View bottomView, topView;
 
     private GotoDetailListener gotoDetailListener;
+    private CommonFragment commonFragment;
 
     public DragLayout(Context context) {
         this(context, null);
@@ -156,6 +162,14 @@ public class DragLayout extends FrameLayout {
 
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
+            Log.d(Const.TAG, "view realeased: x "+ xvel+" & y "+yvel);
+
+            if(yvel > 5000 && downState == STATE_CLOSE)
+            {
+                Log.d(Const.TAG, "destroy this fragment with transition "+commonFragment);
+                EventBus.getDefault().post(new DragToRemoveUser(commonFragment));
+            }
+
             int finalY = originY;
             if (downState == STATE_CLOSE) {
                 if (originY - releasedChild.getTop() > DRAG_SWITCH_DISTANCE_THRESHOLD || yvel < -DRAG_SWITCH_VEL_THRESHOLD) {
@@ -290,8 +304,9 @@ public class DragLayout extends FrameLayout {
         return true;
     }
 
-    public void setGotoDetailListener(GotoDetailListener gotoDetailListener) {
+    public void setGotoDetailListener(GotoDetailListener gotoDetailListener, CommonFragment commonFragment) {
         this.gotoDetailListener = gotoDetailListener;
+        this.commonFragment = commonFragment;
     }
 
     public interface GotoDetailListener {

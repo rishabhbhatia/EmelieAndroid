@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -22,9 +23,14 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.satiate.emelie.R;
 import com.satiate.emelie.adapters.HomePagerTransformer;
+import com.satiate.emelie.events.DragToRemoveUser;
 import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.fragments.CommonFragment;
+import com.satiate.emelie.utils.Const;
 import com.satiate.emelie.utils.EmelieUtilities;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -35,15 +41,21 @@ public class HomeActivity extends FragmentActivity {
     private TextView indicatorTv;
     private View positionView;
     private ViewPager viewPager;
+    private HomePagerTransformer homePagerTransformer;
     private List<CommonFragment> fragments = new ArrayList<>();
     public static final String randomImageUrl = "https://unsplash.it/200/300/?random";
+
+    private int USER_COUNT = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        EventBus.getDefault().register(HomeActivity.this);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
             Window window = getWindow();
             window.setFlags(
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
@@ -61,17 +73,15 @@ public class HomeActivity extends FragmentActivity {
         indicatorTv = (TextView) findViewById(R.id.indicator_tv);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        viewPager.setPageTransformer(false, new HomePagerTransformer(this));
+        homePagerTransformer = new HomePagerTransformer(this);
+        viewPager.setPageTransformer(false, homePagerTransformer);
 
-        for (int i = 0; i < 10; i++)
-        {
-            fragments.add(new CommonFragment());
-        }
 
         viewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                CommonFragment fragment = fragments.get(position % 10);
+                CommonFragment fragment = new CommonFragment();
+                fragments.add(fragment);
                 User user = EmelieUtilities.generateRandomUser();
                 fragment.bindData(user);
                 return fragment;
@@ -79,7 +89,12 @@ public class HomeActivity extends FragmentActivity {
 
             @Override
             public int getCount() {
-                return 60;
+                return USER_COUNT;
+            }
+
+            @Override
+            public int getItemPosition(Object object) {
+                return POSITION_NONE;
             }
         });
 
@@ -103,7 +118,8 @@ public class HomeActivity extends FragmentActivity {
         updateIndicatorTv();
     }
 
-    private void updateIndicatorTv() {
+    private void updateIndicatorTv()
+    {
         int totalNum = viewPager.getAdapter().getCount();
         int currentItem = viewPager.getCurrentItem() + 1;
         indicatorTv.setText(Html.fromHtml("<font color='#000000'>" + currentItem + "</font>  /  " + totalNum));
@@ -155,6 +171,30 @@ public class HomeActivity extends FragmentActivity {
 
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(config);
+    }
+
+    @Subscribe
+    public void removeFragment(DragToRemoveUser dragToRemoveUser)
+    {
+        removeFragmentFromViewPager(dragToRemoveUser.getFragment());
+    }
+
+    private void removeFragmentFromViewPager(Fragment fragment) {
+
+        final int currentPosition = viewPager.getCurrentItem();
+
+        viewPager.getAdapter().destroyItem(viewPager, currentPosition, fragment);
+        USER_COUNT = USER_COUNT - 1;
+        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+        fragments.remove(currentPosition);
+        viewPager.getAdapter().notifyDataSetChanged();
+        viewPager.setCurrentItem(currentPosition+1, false);
+        viewPager.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                viewPager.setCurrentItem(currentPosition, false);
+            }
+        }, 100);
     }
 
 }
