@@ -106,7 +106,7 @@ public class HomeActivity extends FragmentActivity {
 
             @Override
             public void onPageSelected(int position) {
-                updateIndicatorTv();
+//                updateIndicatorTv();
             }
 
             @Override
@@ -115,7 +115,7 @@ public class HomeActivity extends FragmentActivity {
             }
         });
 
-        updateIndicatorTv();
+//        updateIndicatorTv();
     }
 
     private void updateIndicatorTv()
