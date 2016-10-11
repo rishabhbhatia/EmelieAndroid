@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:alpha="0"
+                android:alpha="1"
                 android:background="@drawable/white_back">
 
                 <LinearLayout
@@ -117,6 +117,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 app:cardCornerRadius="5dp"
+                android:visibility="gone"
                 app:cardElevation="7dp"
                 app:cardMaxElevation="7dp">
 
@@ -165,17 +166,6 @@
                             android:text="24 years"
                             android:textSize="15sp"
                             />
-
-                        <com.mikhaellopez.circularimageview.CircularImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/ic_like_active"
-                            app:civ_shadow="true"
-                            app:civ_shadow_radius="10"
-                            android:visibility="gone"
-                            android:layout_margin="10dp"
-                            app:civ_shadow_color="#40000000"/>
-
 
                     </LinearLayout>
 

@@ -30,6 +30,57 @@
             android:paddingEnd="10dp"
             >
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    >
+
+                    <TextView
+                        android:id="@+id/iv_home_detail_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Like"
+                        android:drawablePadding="5dp"
+                        android:drawableLeft="@drawable/ic_like"
+                        android:drawableStart="@drawable/ic_like"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    >
+
+                    <TextView
+                        android:id="@+id/iv_home_detail_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:text="Comment"
+                        android:drawableLeft="@drawable/ic_comment"
+                        android:drawableStart="@drawable/ic_comment"
+                        />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    />
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/tv_home_footer_name"
                 android:layout_width="match_parent"
@@ -49,17 +100,6 @@
                 android:text="24 years"
                 android:textSize="15sp"
                 />
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/ic_like_active"
-                app:civ_shadow="true"
-                app:civ_shadow_radius="10"
-                android:visibility="gone"
-                android:layout_margin="10dp"
-                app:civ_shadow_color="#40000000"/>
-
 
         </LinearLayout>
 
