@@ -55,6 +55,14 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
     AspectRatioCardView cardHome;
     @BindView(R.id.drag_layout)
     DragLayout dragLayout;
+    @BindView(R.id.tv_home_like)
+    TextView tvHomeLike;
+    @BindView(R.id.tv_home_comment)
+    TextView tvHomeComment;
+    @BindView(R.id.tv_home_views)
+    TextView tvHomeViews;
+    @BindView(R.id.tv_home_comments)
+    TextView tvHomeComments;
 
     private User user;
 
@@ -80,7 +88,11 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
                 new Pair(head3, HomeDetailActivity.HEAD3_TRANSITION_NAME),
                 new Pair(head4, HomeDetailActivity.HEAD4_TRANSITION_NAME),
                 new Pair(tvHomeFooterName, HomeDetailActivity.FOOTER_NAME_TRANSITION_NAME),
-                new Pair(tvHomeFooterAge, HomeDetailActivity.FOOTER_AGE_TRANSITION_NAME)
+                new Pair(tvHomeFooterAge, HomeDetailActivity.FOOTER_AGE_TRANSITION_NAME),
+                new Pair(tvHomeLike, HomeDetailActivity.FOOTER_LIKE_TRANSITION_NAME),
+                new Pair(tvHomeComment, HomeDetailActivity.FOOTER_COMMENT_TRANSITION_NAME),
+                new Pair(tvHomeViews, HomeDetailActivity.FOOTER_VIEWS_TRANSITION_NAME),
+                new Pair(tvHomeComments, HomeDetailActivity.FOOTER_COMMENTS_TRANSITION_NAME)
         );
         Intent intent = new Intent(activity, HomeDetailActivity.class);
         intent.putExtra(HomeDetailActivity.EXTRA_IMAGE_URL, user.getImageUrl());

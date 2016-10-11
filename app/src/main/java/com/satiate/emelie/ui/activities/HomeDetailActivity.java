@@ -36,7 +36,6 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     public static final String EXTRA_IMAGE_URL = "detailImageUrl";
 
     public static final String IMAGE_TRANSITION_NAME = "transitionImage";
-    public static final String RATINGBAR_TRANSITION_NAME = "ratingBar";
 
     public static final String HEAD1_TRANSITION_NAME = "head1";
     public static final String HEAD2_TRANSITION_NAME = "head2";
@@ -45,12 +44,26 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
 
     public static final String FOOTER_NAME_TRANSITION_NAME = "name";
     public static final String FOOTER_AGE_TRANSITION_NAME = "age";
+
+    public static final String FOOTER_LIKE_TRANSITION_NAME = "like";
+    public static final String FOOTER_COMMENT_TRANSITION_NAME = "comment";
+    public static final String FOOTER_VIEWS_TRANSITION_NAME = "views";
+    public static final String FOOTER_COMMENTS_TRANSITION_NAME = "comments";
+
     @BindView(R.id.tv_home_footer_name)
     TextView tvHomeFooterName;
     @BindView(R.id.tv_home_footer_age)
     TextView tvHomeFooterAge;
     @BindView(R.id.ll_home_footer)
     LinearLayout llHomeFooter;
+    @BindView(R.id.tv_home_detail_like)
+    TextView tvHomeDetailLike;
+    @BindView(R.id.tv_home_detail_comment)
+    TextView tvHomeDetailComment;
+    @BindView(R.id.tv_home_views)
+    TextView tvHomeViews;
+    @BindView(R.id.tv_home_comments)
+    TextView tvHomeComments;
 
     private boolean shouldFinish = false;
 
@@ -91,6 +104,10 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
         ViewCompat.setTransitionName(image, IMAGE_TRANSITION_NAME);
         ViewCompat.setTransitionName(tvHomeFooterName, FOOTER_NAME_TRANSITION_NAME);
         ViewCompat.setTransitionName(image, FOOTER_AGE_TRANSITION_NAME);
+        ViewCompat.setTransitionName(tvHomeDetailLike, FOOTER_LIKE_TRANSITION_NAME);
+        ViewCompat.setTransitionName(tvHomeDetailComment, FOOTER_COMMENT_TRANSITION_NAME);
+        ViewCompat.setTransitionName(tvHomeViews, FOOTER_VIEWS_TRANSITION_NAME);
+        ViewCompat.setTransitionName(tvHomeComments, FOOTER_COMMENTS_TRANSITION_NAME);
 
         dealListView();
 
