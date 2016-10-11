@@ -21,8 +21,13 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.satiate.emelie.R;
+import com.satiate.emelie.events.ShowUserDetailsEvent;
+import com.satiate.emelie.models.User;
 import com.satiate.emelie.utils.Const;
 import com.satiate.emelie.utils.MyExceptionHandler;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,6 +70,8 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
     @BindView(R.id.tv_home_comments)
     TextView tvHomeComments;
 
+    private User user;
+
     private boolean shouldFinish = false;
 
     @BindView(R.id.image)
@@ -98,8 +105,13 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        String imageUrl = getIntent().getStringExtra(EXTRA_IMAGE_URL);
-        ImageLoader.getInstance().displayImage(imageUrl, image);
+//        EventBus.getDefault().register(HomeDetailActivity.this);
+        user = EventBus.getDefault().getStickyEvent(ShowUserDetailsEvent.class).getUser();
+
+        if(user != null)
+        {
+            loadUserDetails();
+        }
 
         ViewCompat.setTransitionName(image, IMAGE_TRANSITION_NAME);
         ViewCompat.setTransitionName(tvHomeFooterName, FOOTER_NAME_TRANSITION_NAME);
@@ -120,6 +132,13 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
                 return true;
             }
         });
+    }
+
+    private void loadUserDetails()
+    {
+        ImageLoader.getInstance().displayImage(user.getImageUrl(), image);
+        tvHomeFooterName.setText(user.getName());
+        tvHomeFooterAge.setText(user.getAge()+"");
     }
 
     private void dealListView() {
@@ -195,4 +214,5 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
             HomeDetailActivity.this.finish();
         }
     }
+
 }

@@ -18,10 +18,13 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.satiate.emelie.R;
+import com.satiate.emelie.events.ShowUserDetailsEvent;
 import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.activities.HomeDetailActivity;
 import com.satiate.emelie.utils.AspectRatioCardView;
 import com.satiate.emelie.utils.DragLayout;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -104,7 +107,8 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
                 new Pair(tvHomeComments, HomeDetailActivity.FOOTER_COMMENTS_TRANSITION_NAME)
         );
         Intent intent = new Intent(activity, HomeDetailActivity.class);
-        intent.putExtra(HomeDetailActivity.EXTRA_IMAGE_URL, user.getImageUrl());
+        ShowUserDetailsEvent showUserDetailsEvent = new ShowUserDetailsEvent(user);
+        EventBus.getDefault().postSticky(showUserDetailsEvent);
         ActivityCompat.startActivity(activity, intent, options.toBundle());
     }
 
