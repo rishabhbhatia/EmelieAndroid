@@ -38,7 +38,6 @@ import java.util.List;
 
 public class HomeActivity extends FragmentActivity {
 
-    private TextView indicatorTv;
     private View positionView;
     private ViewPager viewPager;
     private HomePagerTransformer homePagerTransformer;
@@ -70,7 +69,6 @@ public class HomeActivity extends FragmentActivity {
 
     private void fillViewPager()
     {
-        indicatorTv = (TextView) findViewById(R.id.indicator_tv);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         homePagerTransformer = new HomePagerTransformer(this);
@@ -106,7 +104,6 @@ public class HomeActivity extends FragmentActivity {
 
             @Override
             public void onPageSelected(int position) {
-//                updateIndicatorTv();
             }
 
             @Override
@@ -115,14 +112,6 @@ public class HomeActivity extends FragmentActivity {
             }
         });
 
-//        updateIndicatorTv();
-    }
-
-    private void updateIndicatorTv()
-    {
-        int totalNum = viewPager.getAdapter().getCount();
-        int currentItem = viewPager.getCurrentItem() + 1;
-        indicatorTv.setText(Html.fromHtml("<font color='#000000'>" + currentItem + "</font>  /  " + totalNum));
     }
 
     private void dealStatusBar() {

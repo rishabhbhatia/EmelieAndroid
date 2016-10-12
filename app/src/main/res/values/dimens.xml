@@ -4,4 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_bottom_info_height">150dp</dimen>
     <dimen name="card_extra_height">20dp</dimen>
+
+    <dimen name="tab_images_only_height">48dp</dimen>
+    <dimen name="tab_images_text_height">72dp</dimen>
 </resources>

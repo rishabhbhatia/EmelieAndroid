@@ -8,7 +8,6 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
         android:clipToPadding="false"
         android:paddingEnd="48dp"
         android:paddingLeft="48dp"
@@ -16,87 +15,6 @@
         android:paddingStart="48dp">
 
     </android.support.v4.view.ViewPager>
-
-    <RelativeLayout
-        android:id="@+id/bottom_layout"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentBottom="true">
-
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/icon1" />
-
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/icon2" />
-
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/icon3" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_above="@+id/indicator_tv"
-        >
-
-        <ImageView
-            android:background="@drawable/circle_bg"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_like"
-            android:padding="10dp"
-            />
-
-        <ImageView
-            android:background="@drawable/circle_bg"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_comment"
-            android:padding="10dp"
-            />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/indicator_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/card_extra_height"
-        android:layout_above="@+id/bottom_layout"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_vertical"
-        android:text="1/199"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:visibility="invisible"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -140,6 +58,133 @@
                 android:background="@drawable/search" />
 
         </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_home_like_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:visibility="gone"
+        android:layout_above="@+id/ll_tab_footer_main"
+        >
+
+        <ImageView
+            android:background="@drawable/circle_bg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_like"
+            android:padding="10dp"
+            />
+
+        <ImageView
+            android:background="@drawable/circle_bg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_comment"
+            android:padding="10dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_tab_footer_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_tab_footer_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_images_only_height"
+            android:background="@android:color/white"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_tab_footer_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.20"
+                android:gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_tab_footer_1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_home_active"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tab_footer_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_tab_footer_2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_camera_inactive"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tab_footer_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_tab_footer_3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_profile_inactive"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tab_footer_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_tab_footer_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_comment"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
