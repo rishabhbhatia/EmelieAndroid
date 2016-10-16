@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
 
 import com.satiate.emelie.R;
 import com.satiate.emelie.events.DragToRemoveUser;
-import com.satiate.emelie.ui.fragments.CommonFragment;
+import com.satiate.emelie.ui.fragments.HomeStoryCardFragment;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -47,7 +47,7 @@ public class DragLayout extends FrameLayout {
     private View bottomView, topView;
 
     private GotoDetailListener gotoDetailListener;
-    private CommonFragment commonFragment;
+    private HomeStoryCardFragment homeStoryCardFragment;
 
     public DragLayout(Context context) {
         this(context, null);
@@ -81,6 +81,16 @@ public class DragLayout extends FrameLayout {
         bottomView = getChildAt(0);
         topView = getChildAt(1);
 
+        final GestureDetector gestureDetector = new GestureDetector(new HomeCardGestureDetector());
+        topView.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                gestureDetector.onTouchEvent(motionEvent);
+                return true;
+            }
+        });
+
+/*
         topView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +103,7 @@ public class DragLayout extends FrameLayout {
                     gotoDetailActivity();
                 }
             }
-        });
+        });*/
     }
 
     private void gotoDetailActivity() {
@@ -166,8 +176,8 @@ public class DragLayout extends FrameLayout {
 
             if(yvel > 5000 && downState == STATE_CLOSE)
             {
-                Log.d(Const.TAG, "destroy this fragment with transition "+commonFragment);
-                EventBus.getDefault().post(new DragToRemoveUser(commonFragment));
+                Log.d(Const.TAG, "destroy this fragment with transition "+ homeStoryCardFragment);
+                EventBus.getDefault().post(new DragToRemoveUser(homeStoryCardFragment));
             }
 
             int finalY = originY;
@@ -304,13 +314,60 @@ public class DragLayout extends FrameLayout {
         return true;
     }
 
-    public void setGotoDetailListener(GotoDetailListener gotoDetailListener, CommonFragment commonFragment) {
+    public void setGotoDetailListener(GotoDetailListener gotoDetailListener, HomeStoryCardFragment homeStoryCardFragment) {
         this.gotoDetailListener = gotoDetailListener;
-        this.commonFragment = commonFragment;
+        this.homeStoryCardFragment = homeStoryCardFragment;
     }
 
     public interface GotoDetailListener {
         public void gotoDetail();
     }
+
+    class HomeCardGestureDetector extends GestureDetector.SimpleOnGestureListener {
+
+        public HomeCardGestureDetector() {
+            super();
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            Log.d(Const.TAG, "single tap up");
+            return super.onSingleTapUp(e);
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+            Log.d(Const.TAG, "long press");
+            super.onLongPress(e);
+        }
+
+        @Override
+        public boolean onDoubleTap(MotionEvent e) {
+            Log.d(Const.TAG, "double tap");
+            homeStoryCardFragment.likeStory();
+            return super.onDoubleTap(e);
+        }
+
+        @Override
+        public boolean onDoubleTapEvent(MotionEvent e) {
+            Log.d(Const.TAG, "double tap event");
+            return super.onDoubleTapEvent(e);
+        }
+
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            Log.d(Const.TAG, "single tap confirmed");
+            int state = getCurrentState();
+            if (state == STATE_CLOSE) {
+                if (mDragHelper.smoothSlideViewTo(topView, originX, dragTopDest)) {
+                    ViewCompat.postInvalidateOnAnimation(DragLayout.this);
+                }
+            } else {
+                gotoDetailActivity();
+            }
+            return super.onSingleTapConfirmed(e);
+        }
+    }
+
 }
 

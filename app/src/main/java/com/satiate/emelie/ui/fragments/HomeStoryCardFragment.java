@@ -8,32 +8,38 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.satiate.emelie.R;
 import com.satiate.emelie.events.ShowUserDetailsEvent;
 import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.activities.HomeDetailActivity;
 import com.satiate.emelie.utils.AspectRatioCardView;
+import com.satiate.emelie.utils.Const;
 import com.satiate.emelie.utils.DragLayout;
 
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Rishabh Bhatia on 10/9/2016.
  */
 
-public class CommonFragment extends Fragment implements DragLayout.GotoDetailListener {
+public class HomeStoryCardFragment extends Fragment implements DragLayout.GotoDetailListener {
 
 
     @BindView(R.id.head1)
@@ -52,8 +58,8 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
     TextView tvHomeFooterName;
     @BindView(R.id.tv_home_footer_age)
     TextView tvHomeFooterAge;
-    @BindView(R.id.ll_home_footer)
-    LinearLayout llHomeFooter;
+    @BindView(R.id.rl_home_footer)
+    RelativeLayout rlHomeFooter;
     @BindView(R.id.card_home)
     AspectRatioCardView cardHome;
     @BindView(R.id.drag_layout)
@@ -66,6 +72,12 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
     TextView tvHomeViews;
     @BindView(R.id.tv_home_comments)
     TextView tvHomeComments;
+    @BindView(R.id.ll_home_footer_like)
+    LinearLayout llHomeFooterLike;
+    @BindView(R.id.ll_home_footer_comment)
+    LinearLayout llHomeFooterComment;
+    @BindView(R.id.iv_story_card_like_animation)
+    ImageView ivStoryCardLikeAnimation;
 
     private User user;
 
@@ -73,20 +85,19 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_common, null);
+        View rootView = inflater.inflate(R.layout.fragment_story_card, null);
         ButterKnife.bind(this, rootView);
-        dragLayout.setGotoDetailListener(this, CommonFragment.this);
+        dragLayout.setGotoDetailListener(this, HomeStoryCardFragment.this);
 
         populateScreen();
 
         return rootView;
     }
 
-    private void populateScreen()
-    {
+    private void populateScreen() {
         ImageLoader.getInstance().displayImage(user.getImageUrl(), image);
         tvHomeFooterName.setText(user.getName());
-        tvHomeFooterAge.setText(user.getAge()+" years");
+        tvHomeFooterAge.setText(user.getAge() + " days ago");
     }
 
     @Override
@@ -114,5 +125,33 @@ public class CommonFragment extends Fragment implements DragLayout.GotoDetailLis
 
     public void bindData(User user) {
         this.user = user;
+    }
+
+    @OnClick({R.id.ll_home_footer_like, R.id.ll_home_footer_comment})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_home_footer_like:
+                break;
+            case R.id.ll_home_footer_comment:
+                break;
+        }
+    }
+
+    public void likeStory() {
+        Log.d(Const.TAG, "like story");
+        ivStoryCardLikeAnimation.setVisibility(View.VISIBLE);
+        YoYo.with(Techniques.FadeOutUp).duration(1000).playOn(ivStoryCardLikeAnimation);
+      /*  Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        YoYo.with(Techniques.FadeOutUp).duration(1000).playOn(ivStoryCardLikeAnimation);
+                    }
+                });
+            }
+        }, 1000);*/
     }
 }

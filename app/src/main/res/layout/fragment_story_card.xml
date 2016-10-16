@@ -43,6 +43,7 @@
                         >
 
                         <LinearLayout
+                            android:id="@+id/ll_home_footer_like"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
@@ -62,6 +63,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/ll_home_footer_comment"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
@@ -186,6 +188,7 @@
                 android:layout_marginRight="20dp"
                 app:cardCornerRadius="5dp"
                 android:visibility="visible"
+                app:cardBackgroundColor="@android:color/background_dark"
                 app:cardElevation="7dp"
                 app:cardMaxElevation="7dp">
 
@@ -196,24 +199,36 @@
 
                     <ImageView
                         android:id="@+id/image"
-                        android:layout_above="@+id/ll_home_footer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop" />
 
-                    <LinearLayout
-                        android:id="@+id/ll_home_footer"
+                    <RelativeLayout
+                        android:id="@+id/rl_home_footer"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:orientation="vertical"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingStart="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingEnd="10dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingStart="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingEnd="15dp"
                         >
+
+                        <TextView
+                            android:id="@+id/tv_home_footer_travel_dest"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:text="Thailand"
+                            android:textAllCaps="true"
+                            android:textSize="18sp"
+                            android:padding="15dp"
+                            android:gravity="top|center"
+                            android:textColor="@android:color/white"
+                            />
 
                         <TextView
                             android:id="@+id/tv_home_footer_name"
@@ -222,7 +237,9 @@
                             android:singleLine="true"
                             android:ellipsize="end"
                             android:text="Rishabh Bhatia"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
+                            android:layout_above="@+id/tv_home_footer_age"
+                            android:textColor="@android:color/white"
                             />
 
                         <TextView
@@ -231,11 +248,22 @@
                             android:layout_height="wrap_content"
                             android:singleLine="true"
                             android:ellipsize="end"
-                            android:text="24 years"
-                            android:textSize="15sp"
+                            android:layout_alignParentBottom="true"
+                            android:text="moments ago"
+                            android:textSize="13sp"
+                            android:textColor="@android:color/white"
                             />
 
-                    </LinearLayout>
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_story_card_like_animation"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_like_footer_active"
+                        android:visibility="invisible"
+                        />
 
                 </RelativeLayout>
 
