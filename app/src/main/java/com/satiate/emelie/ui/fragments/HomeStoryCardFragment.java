@@ -24,6 +24,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.satiate.emelie.R;
 import com.satiate.emelie.events.ShowUserDetailsEvent;
 import com.satiate.emelie.models.User;
+import com.satiate.emelie.ui.activities.HomeActivity;
 import com.satiate.emelie.ui.activities.HomeDetailActivity;
 import com.satiate.emelie.utils.AspectRatioCardView;
 import com.satiate.emelie.utils.Const;
@@ -89,9 +90,14 @@ public class HomeStoryCardFragment extends Fragment implements DragLayout.GotoDe
         ButterKnife.bind(this, rootView);
         dragLayout.setGotoDetailListener(this, HomeStoryCardFragment.this);
 
-        populateScreen();
-
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        populateScreen();
     }
 
     private void populateScreen() {
@@ -141,17 +147,6 @@ public class HomeStoryCardFragment extends Fragment implements DragLayout.GotoDe
         Log.d(Const.TAG, "like story");
         ivStoryCardLikeAnimation.setVisibility(View.VISIBLE);
         YoYo.with(Techniques.FadeOutUp).duration(1000).playOn(ivStoryCardLikeAnimation);
-      /*  Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        YoYo.with(Techniques.FadeOutUp).duration(1000).playOn(ivStoryCardLikeAnimation);
-                    }
-                });
-            }
-        }, 1000);*/
     }
+
 }
