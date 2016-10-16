@@ -30,8 +30,8 @@ public class DragLayout extends FrameLayout {
     private int bototmExtraIndicatorHeight;
     private int dragTopDest = 0;
     private static final int DECELERATE_THRESHOLD = 120;
-    private static final int DRAG_SWITCH_DISTANCE_THRESHOLD = 100;
-    private static final int DRAG_SWITCH_VEL_THRESHOLD = 800;
+    private static final int DRAG_SWITCH_DISTANCE_THRESHOLD = 25;
+    private static final int DRAG_SWITCH_VEL_THRESHOLD = 500;
 
     private static final float MIN_SCALE_RATIO = 0.5f;
     private static final float MAX_SCALE_RATIO = 1.0f;
