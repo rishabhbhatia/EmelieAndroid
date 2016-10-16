@@ -1,6 +1,8 @@
 package com.satiate.emelie.ui.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -26,6 +29,7 @@ import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.satiate.emelie.R;
 import com.satiate.emelie.adapters.HomePagerTransformer;
 import com.satiate.emelie.base.EmelieActivity;
+import com.satiate.emelie.camera.CameraUtils;
 import com.satiate.emelie.events.DragToRemoveUser;
 import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.fragments.AddStoryFragment;
@@ -86,6 +90,8 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
     ImageView ivHomeNav;
     @BindView(R.id.iv_home_add_story)
     ImageView ivHomeAddStory;
+    @BindView(R.id.rl_home_main)
+    RelativeLayout rlHomeMain;
 
     private HomePagerTransformer homePagerTransformer;
     private List<HomeStoryCardFragment> fragments = new ArrayList<>();
@@ -104,9 +110,21 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
         EventBus.getDefault().register(HomeActivity.this);
 
 //        dealStatusBar();
+        getBackgroundColor();
         initImageLoader();
         fillViewPager();
         createResideMenu();
+    }
+
+    private void getBackgroundColor() {
+        Drawable background = rlHomeMain.getBackground();
+        int color = EmelieUtilities.getDominantColor(CameraUtils.drawableToBitmap(background));
+        Log.d(Const.TAG, "color i get is: "+color);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(color);
+            Log.d(Const.TAG, "status bar color changed");
+        }
     }
 
     private void createResideMenu() {

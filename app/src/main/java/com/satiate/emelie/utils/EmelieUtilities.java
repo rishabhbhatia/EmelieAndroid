@@ -1,5 +1,7 @@
 package com.satiate.emelie.utils;
 
+import android.graphics.Bitmap;
+
 import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.activities.HomeActivity;
 
@@ -42,6 +44,14 @@ public class EmelieUtilities {
         user.setImageUrl(HomeActivity.randomImageUrl);
 
         return user;
+    }
+
+    public static int getDominantColor(Bitmap bitmap)
+    {
+        Bitmap newBitmap = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
+        final int color = newBitmap.getPixel(0, 0);
+        newBitmap.recycle();
+        return color;
     }
 
 }
