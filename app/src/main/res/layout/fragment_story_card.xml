@@ -217,12 +217,12 @@
                         >
 
                         <TextView
-                            android:id="@+id/tv_home_footer_travel_dest"
+                            android:id="@+id/tv_home_footer_story_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:singleLine="true"
                             android:ellipsize="end"
-                            android:text="Thailand"
+                            android:text="Family Vacation"
                             android:textAllCaps="true"
                             android:textSize="18sp"
                             android:padding="15dp"
@@ -238,12 +238,12 @@
                             android:ellipsize="end"
                             android:text="Rishabh Bhatia"
                             android:textSize="16sp"
-                            android:layout_above="@+id/tv_home_footer_age"
+                            android:layout_above="@+id/tv_home_footer_time"
                             android:textColor="@android:color/white"
                             />
 
                         <TextView
-                            android:id="@+id/tv_home_footer_age"
+                            android:id="@+id/tv_home_footer_time"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:singleLine="true"

@@ -28,6 +28,7 @@ import com.satiate.emelie.adapters.HomePagerTransformer;
 import com.satiate.emelie.base.EmelieActivity;
 import com.satiate.emelie.camera.CameraUtils;
 import com.satiate.emelie.events.DragToRemoveUser;
+import com.satiate.emelie.models.Story;
 import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.fragments.AddStoryFragment;
 import com.satiate.emelie.ui.fragments.HomeStoryCardFragment;
@@ -177,8 +178,11 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
             public Fragment getItem(int position) {
                 HomeStoryCardFragment fragment = new HomeStoryCardFragment();
                 fragments.add(fragment);
+                Story story = new Story();
+                story.setTitle(EmelieUtilities.generateRandomStrings(6)+" "+EmelieUtilities.generateRandomStrings(4));
                 User user = EmelieUtilities.generateRandomUser();
-                fragment.bindData(user);
+                story.setUser(user);
+                fragment.bindData(story);
                 return fragment;
             }
 
