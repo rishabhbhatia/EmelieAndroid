@@ -118,12 +118,21 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:background="@color/login_bg_primary_darker"
             android:text="LogIn to my account"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:elevation="7dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_forgot_pass"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
             />
 
     </LinearLayout>

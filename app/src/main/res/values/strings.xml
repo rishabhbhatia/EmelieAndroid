@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Emelie</string>
+
+    <!-- Login Screen -->
+    <string name="login_forgot_pass"><u>Forgot Password. Need Help?</u></string>
+
 </resources>
