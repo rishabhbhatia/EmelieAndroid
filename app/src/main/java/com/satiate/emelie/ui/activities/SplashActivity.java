@@ -12,7 +12,14 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        launchHomeScreen();
+        launchLoginScreen();
+//        launchHomeScreen();
+    }
+
+    private void launchLoginScreen() {
+        Intent loginIntent = new Intent(SplashActivity.this, LoginActivity.class);
+        startActivity(loginIntent);
+        finish();
     }
 
     private void launchHomeScreen()

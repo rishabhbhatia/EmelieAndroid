@@ -45,12 +45,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|center"
+                    android:singleLine="true"
                     android:layout_marginStart="25dp"
                     android:layout_marginLeft="25dp"
                     android:hint="Rishabh Bhatia"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
                     android:textColorHint="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
                     />
 
             </LinearLayout>
@@ -95,6 +98,8 @@
                     android:textSize="15sp"
                     android:inputType="textPassword"
                     android:textColorHint="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:singleLine="true"
                     />
 
             </LinearLayout>
