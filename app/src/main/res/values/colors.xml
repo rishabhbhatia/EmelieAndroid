@@ -7,6 +7,8 @@
     <color name="divider">#aaa</color>
     <color name="bg_color">#EEEEEE</color>
 
+    <color name="fb">#3b5998</color>
+
     <!-- Login Screen -->
     <color name="login_bg_primary">#546E7A</color>
     <color name="login_bg_primary_dark">#455A64</color>
