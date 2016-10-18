@@ -4,4 +4,14 @@
     <!-- Login Screen -->
     <string name="login_forgot_pass"><u>Forgot Password. Need Help?</u></string>
 
+    <!-- SignUp Screen -->
+    <string name="signup_fname">First Name</string>
+    <string name="signup_lname">Last Name</string>
+    <string name="signup_uname">Username</string>
+    <string name="signup_email">E-Mail</string>
+    <string name="signup_pass">Password</string>
+    <string name="signup_confirm_pass">Confirm Password</string>
+    <string name="signup_signup_button">SignUp</string>
+    <string name="signup_or">OR</string>
+
 </resources>
