@@ -108,7 +108,7 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
         EventBus.getDefault().register(HomeActivity.this);
 
 //        dealStatusBar();
-        getBackgroundColor();
+//        getBackgroundColor();
         initImageLoader();
         fillViewPager();
         createResideMenu();
