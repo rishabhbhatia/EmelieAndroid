@@ -141,6 +141,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_login_signup_holder"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="10%"
         android:gravity="center"
@@ -148,6 +149,7 @@
         >
 
         <Button
+            android:id="@+id/bt_login_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/login_bg_primary_darker"
@@ -160,5 +162,9 @@
 
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container"/>
 
 </android.support.percent.PercentRelativeLayout>

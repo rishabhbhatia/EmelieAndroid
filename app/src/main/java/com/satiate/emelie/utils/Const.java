@@ -7,4 +7,5 @@ package com.satiate.emelie.utils;
 public class Const {
 
     public static final String TAG = "emel";
+    public static final String FRAGMENT_SWITCH_ADD = "ADD";
 }

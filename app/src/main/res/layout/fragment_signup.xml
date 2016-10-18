@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/ll_signup_input_holder"
-        app:layout_widthPercent="70%"
-        app:layout_heightPercent="90%"
+        app:layout_widthPercent="80%"
+        app:layout_heightPercent="100%"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
