@@ -9,11 +9,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.satiate.emelie.R;
 import com.satiate.emelie.models.Story;
 
@@ -28,6 +28,7 @@ public class CardItemView extends FrameLayout {
     private TextView likeNumTv;
     private CardSlidePanel parentView;
     private View topLayout, bottomLayout;
+    private Context context;
 
     public CardItemView(Context context) {
         this(context, null);
@@ -40,6 +41,7 @@ public class CardItemView extends FrameLayout {
     public CardItemView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         inflate(context, R.layout.card_item, this);
+        this.context = context;
         imageView = (ImageView) findViewById(R.id.card_image_view);
         maskView = findViewById(R.id.maskView);
         userNameTv = (TextView) findViewById(R.id.card_user_name);
@@ -76,7 +78,7 @@ public class CardItemView extends FrameLayout {
     }
 
     public void fillData(Story story) {
-        ImageLoader.getInstance().displayImage("https://unsplash.it/200/300/?random", imageView);
+        Glide.with(context).load("https://unsplash.it/200/300/?random").into(imageView);
         userNameTv.setText(story.getTitle());
         imageNumTv.setText(story.getCommentsCount() + "");
         likeNumTv.setText(story.getLikesCount() + "");

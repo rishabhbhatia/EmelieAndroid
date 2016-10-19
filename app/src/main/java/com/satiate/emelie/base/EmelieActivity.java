@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.satiate.emelie.R;
-import com.satiate.emelie.ui.fragments.HomeStoryCardFragment;
 import com.satiate.emelie.utils.Const;
 
 import java.util.List;
@@ -38,7 +37,6 @@ public class EmelieActivity extends AppCompatActivity implements EmelieActivityI
     @Override
     public void removeAllFragments(EmelieActivity activity) {
         try {
-//            activity.getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             List<Fragment> fragments = activity.getSupportFragmentManager().getFragments();
 
             if(fragments != null && fragments.size() != 0)
@@ -49,14 +47,9 @@ public class EmelieActivity extends AppCompatActivity implements EmelieActivityI
 
                     if(fragment == null) return;
 
-                    if(fragment instanceof HomeStoryCardFragment)
-                    {
-                        Log.d(Const.TAG, "Found a story fragment");
-                    }else
-                    {
-                        activity.getSupportFragmentManager().beginTransaction().remove(fragment).commitAllowingStateLoss();
-                        Log.d(Const.TAG, "removing a fragment");
-                    }
+
+                    activity.getSupportFragmentManager().beginTransaction().remove(fragment).commitAllowingStateLoss();
+                    Log.d(Const.TAG, "removing a fragment");
                 }
             }
 

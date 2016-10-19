@@ -1,11 +1,8 @@
 package com.satiate.emelie.ui.activities;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewCompat;
 import android.util.Log;
@@ -19,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.bumptech.glide.Glide;
 import com.satiate.emelie.R;
 import com.satiate.emelie.events.ShowUserDetailsEvent;
 import com.satiate.emelie.models.User;
@@ -27,7 +24,6 @@ import com.satiate.emelie.utils.Const;
 import com.satiate.emelie.utils.MyExceptionHandler;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -136,7 +132,7 @@ public class HomeDetailActivity extends FragmentActivity implements GestureDetec
 
     private void loadUserDetails()
     {
-        ImageLoader.getInstance().displayImage(user.getImageUrl(), image);
+        Glide.with(HomeDetailActivity.this).load(user.getImageUrl()).into(image);
         tvHomeFooterName.setText(user.getName());
         tvHomeFooterAge.setText(user.getAge()+" years");
     }
