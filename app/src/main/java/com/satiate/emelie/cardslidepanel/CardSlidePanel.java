@@ -8,6 +8,7 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 
 import com.satiate.emelie.R;
 import com.satiate.emelie.models.Story;
+import com.satiate.emelie.ui.activities.HomeActivity;
+import com.satiate.emelie.utils.Const;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +40,7 @@ public class CardSlidePanel extends ViewGroup {
 
     private View bottomLayout;
 
-    private int itemMarginTop = 260;
+    private int itemMarginTop = 200;
     private int bottomMarginTop = 40;
     private int yOffsetStep = 40;
     private int mTouchSlop = 5;
@@ -69,6 +72,13 @@ public class CardSlidePanel extends ViewGroup {
 
     public CardSlidePanel(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+
+        if(HomeActivity.screenHeight != 0)
+        {
+            itemMarginTop = HomeActivity.screenHeight/5;
+            Log.d(Const.TAG, "carditem margin top is: "+itemMarginTop);
+        }
+
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.card);
 
         itemMarginTop = (int) a.getDimension(R.styleable.card_itemMarginTop, itemMarginTop);

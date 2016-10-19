@@ -14,6 +14,7 @@ import com.satiate.emelie.R;
 import com.satiate.emelie.base.EmelieActivity;
 import com.satiate.emelie.cardslidepanel.HomeCardFragment;
 import com.satiate.emelie.utils.Const;
+import com.satiate.emelie.utils.EmelieUtilities;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
@@ -36,6 +37,7 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
     @BindView(R.id.rl_home_main)
     RelativeLayout rlHomeMain;
 
+    public static int screenHeight = 0;
     private HomeCardFragment homeCardFragment;
 
     public static final String randomImageUrl = "https://unsplash.it/200/300/?random";
@@ -48,8 +50,13 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
+        loadProperties();
         addHomeCardFragment();
         createResideMenu();
+    }
+
+    private void loadProperties() {
+        screenHeight = EmelieUtilities.getScreenHeight(HomeActivity.this);
     }
 
     private void addHomeCardFragment()
