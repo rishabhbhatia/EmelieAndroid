@@ -1,6 +1,7 @@
 package com.satiate.emelie.cardslidepanel;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,8 +15,10 @@ import android.widget.RelativeLayout;
 
 import com.satiate.emelie.R;
 import com.satiate.emelie.models.Story;
+import com.satiate.emelie.ui.activities.HomeActivity;
 import com.satiate.emelie.utils.Const;
 import com.satiate.emelie.utils.EmelieUtilities;
+import com.special.ResideMenu.ResideMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +45,19 @@ public class HomeCardFragment extends Fragment {
     @BindView(R.id.image_slide_panel)
     CardSlidePanel imageSlidePanel;
     private CardSlidePanel.CardSwitchListener cardSwitchListener;
+    private HomeActivity homeActivity;
 
     private List<Story> stories = new ArrayList<Story>();
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if(context instanceof HomeActivity)
+        {
+            homeActivity = (HomeActivity) context;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,7 +113,13 @@ public class HomeCardFragment extends Fragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_nav:
-                Log.d(Const.TAG, "hello baby");
+                if(homeActivity.resideMenu.isOpened())
+                {
+                    homeActivity.resideMenu.closeMenu();
+                }else
+                {
+                    homeActivity.resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
+                }
                 break;
             case R.id.iv_home_add_story:
                 break;

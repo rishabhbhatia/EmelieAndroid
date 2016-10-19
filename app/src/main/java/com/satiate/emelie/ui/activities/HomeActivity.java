@@ -41,7 +41,7 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
     private HomeCardFragment homeCardFragment;
 
     public static final String randomImageUrl = "https://unsplash.it/200/300/?random";
-    private ResideMenu resideMenu;
+    public ResideMenu resideMenu;
 
 
     @Override
