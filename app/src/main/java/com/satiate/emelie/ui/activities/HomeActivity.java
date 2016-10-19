@@ -41,7 +41,6 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
     public static final String randomImageUrl = "https://unsplash.it/200/300/?random";
     private ResideMenu resideMenu;
 
-    private int USER_COUNT = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +78,7 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
 
         String titles[] = {"Home", "Profile", "Story", "Settings"};
         int icon[] = {R.drawable.ic_home_active, R.drawable.ic_profile_active, R.drawable.ic_camera_active,
-                R.drawable.ic_like_footer_active};
+                R.drawable.ic_camera_active};
 
         for (int i = 0; i < titles.length; i++) {
             ResideMenuItem item = new ResideMenuItem(this, icon[i], titles[i]);
@@ -91,12 +90,12 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
         resideMenu.setMenuListener(new ResideMenu.OnMenuListener() {
             @Override
             public void openMenu() {
-                Toast.makeText(HomeActivity.this, "Menu is opened!", Toast.LENGTH_SHORT).show();
+                //menu is open
             }
 
             @Override
             public void closeMenu() {
-                Toast.makeText(HomeActivity.this, "Menu is closed!", Toast.LENGTH_SHORT).show();
+                //menu is closed
             }
         });
     }

@@ -19,7 +19,7 @@
     </android.support.v4.view.ViewPager>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/ll_home_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -27,6 +27,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_images_only_height"
+            android:visibility="gone"
             >
 
             <ImageView

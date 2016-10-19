@@ -1,6 +1,10 @@
 package com.satiate.emelie.utils;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.view.Display;
 
 import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.activities.HomeActivity;
@@ -52,6 +56,22 @@ public class EmelieUtilities {
         final int color = newBitmap.getPixel(0, 0);
         newBitmap.recycle();
         return color;
+    }
+
+    public static int getScreenHeight(Activity activity)
+    {
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.y;
+    }
+
+    public static int getScreenWidth(Activity activity)
+    {
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.x;
     }
 
 }

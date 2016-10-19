@@ -37,7 +37,7 @@ public class CardSlidePanel extends ViewGroup {
 
     private View bottomLayout;
 
-    private int itemMarginTop = 10;
+    private int itemMarginTop = 260;
     private int bottomMarginTop = 40;
     private int yOffsetStep = 40;
     private int mTouchSlop = 5;
