@@ -1,5 +1,6 @@
 package com.satiate.emelie.ui.activities;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -48,8 +49,8 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-//        createResideMenu();
         addHomeCardFragment();
+        createResideMenu();
     }
 
     private void addHomeCardFragment()
@@ -64,7 +65,13 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
         resideMenu = new ResideMenu(this);
         resideMenu.setShadowVisible(false);
 
-        resideMenu.setBackground(R.drawable.background);
+        if(Build.VERSION.SDK_INT > 23)
+        {
+            resideMenu.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark, null));
+        }else
+        {
+            resideMenu.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
 
         resideMenu.attachToActivity(this);
         resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
