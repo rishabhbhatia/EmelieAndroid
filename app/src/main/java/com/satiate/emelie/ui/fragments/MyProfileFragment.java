@@ -36,7 +36,6 @@ public class MyProfileFragment extends EmelieFragment {
     }
 
     @Override
-    public String onBackPressed() {
-        return super.onBackPressed();
+    public void onBackPressed() {
     }
 }

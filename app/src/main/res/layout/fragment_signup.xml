@@ -20,6 +20,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/et_signup_fname"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.41"
@@ -41,6 +42,7 @@
                 />
 
             <EditText
+                android:id="@+id/et_signup_lname"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.41"
@@ -89,6 +91,7 @@
                 />
 
             <EditText
+                android:id="@+id/et_signup_uname"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.82"
@@ -137,6 +140,7 @@
                 />
 
             <EditText
+                android:id="@+id/et_signup_email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.82"
@@ -185,6 +189,7 @@
                 />
 
             <EditText
+                android:id="@+id/et_signup_pass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.82"
@@ -233,6 +238,7 @@
                 />
 
             <EditText
+                android:id="@+id/et_signup_confirm_pass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.82"
@@ -251,6 +257,7 @@
 
 
         <Button
+            android:id="@+id/bt_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -307,6 +314,7 @@
             >
 
             <Button
+                android:id="@+id/bt_signup_fb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.4"
@@ -324,6 +332,7 @@
                 />
 
             <Button
+                android:id="@+id/bt_signup_google"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.4"
@@ -337,8 +346,6 @@
 
 
     </LinearLayout>
-
-
 
 
 </android.support.percent.PercentRelativeLayout>

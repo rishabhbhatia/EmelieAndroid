@@ -9,9 +9,7 @@ import android.support.v4.app.Fragment;
 public class EmelieFragment extends Fragment implements EmelieFragmentInterface {
 
     @Override
-    public String onBackPressed() {
-        return "";
-    }
+    public void onBackPressed() {}
 
     @Override
     public void removeSelf(EmelieActivity activity, EmelieFragment fragment) {

@@ -6,7 +6,7 @@ package com.satiate.emelie.base;
 
 public interface EmelieFragmentInterface {
 
-    String onBackPressed();
+    void onBackPressed();
 
     void removeSelf(EmelieActivity activity, EmelieFragment fragment);
 }
