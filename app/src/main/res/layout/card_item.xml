@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+
+    <com.satiate.emelie.cardslidepanel.AutoScaleRelativeLayout
+        android:id="@+id/card_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top"
+        card:widthHeightRate="0.6588">
+
+        <ImageView
+            android:id="@+id/card_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:scaleType="fitXY" />
+
+        <View
+            android:id="@+id/maskView"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/card_pic_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#5f000000"
+            android:drawableLeft="@drawable/card_photot"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="61+"
+            android:textColor="#fff" />
+    </com.satiate.emelie.cardslidepanel.AutoScaleRelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/card_bottom_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/card_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Rishabh"
+            android:textColor="#111"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/card_other_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_user_name"
+            android:paddingBottom="16dp"
+            android:layout_marginLeft="10dp"
+            android:text="moments ago"
+            android:textColor="#888" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_like"
+                android:drawablePadding="3dp"
+                android:gravity="center_horizontal"
+                android:text="25"
+                android:layout_marginRight="5dp"
+                android:textColor="#999"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/card_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/ic_comment"
+                android:drawablePadding="3dp"
+                android:gravity="center_horizontal"
+                android:text="2.1k"
+                android:textColor="#999"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

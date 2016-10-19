@@ -8,6 +8,8 @@ public class Story {
 
     private String title;
     private User user;
+    private int likesCount;
+    private int commentsCount;
 
     public User getUser() {
         return user;
@@ -23,5 +25,21 @@ public class Story {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public void setCommentsCount(int commentsCount) {
+        this.commentsCount = commentsCount;
     }
 }

@@ -27,6 +27,7 @@ import com.satiate.emelie.R;
 import com.satiate.emelie.adapters.HomePagerTransformer;
 import com.satiate.emelie.base.EmelieActivity;
 import com.satiate.emelie.camera.CameraUtils;
+import com.satiate.emelie.cardslidepanel.HomeCardFragment;
 import com.satiate.emelie.events.DragToRemoveUser;
 import com.satiate.emelie.models.Story;
 import com.satiate.emelie.models.User;
@@ -58,7 +59,7 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
     LinearLayout linearLayout;
     @BindView(R.id.ll_home_like_comment)
     LinearLayout llHomeLikeComment;
-    @BindView(R.id.frame_fragment_container)
+    @BindView(R.id.container)
     FrameLayout frameFragmentContainer;
     @BindView(R.id.iv_tab_footer_1)
     ImageView ivTabFooter1;
@@ -110,8 +111,11 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
 //        dealStatusBar();
 //        getBackgroundColor();
         initImageLoader();
-        fillViewPager();
-        createResideMenu();
+//        fillViewPager();
+//        createResideMenu();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container, new HomeCardFragment())
+                .commitAllowingStateLoss();
     }
 
     private void getBackgroundColor() {
@@ -314,7 +318,7 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
                 //add story screen
                 if (currentTabPos == 2) return;
                 showFragmentContainer();
-                getSupportFragmentManager().beginTransaction().add(R.id.frame_fragment_container,
+                getSupportFragmentManager().beginTransaction().add(R.id.container,
                         AddStoryFragment.newInstance(), "addstory").commit();
 
                 currentTabPos = 2;
