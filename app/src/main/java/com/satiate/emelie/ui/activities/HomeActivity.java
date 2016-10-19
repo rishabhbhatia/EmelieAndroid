@@ -35,6 +35,8 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
     @BindView(R.id.rl_home_main)
     RelativeLayout rlHomeMain;
 
+    private HomeCardFragment homeCardFragment;
+
     public static final String randomImageUrl = "https://unsplash.it/200/300/?random";
     private ResideMenu resideMenu;
 
@@ -47,8 +49,14 @@ public class HomeActivity extends EmelieActivity implements View.OnClickListener
         ButterKnife.bind(this);
 
 //        createResideMenu();
+        addHomeCardFragment();
+    }
+
+    private void addHomeCardFragment()
+    {
+        homeCardFragment = new HomeCardFragment();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new HomeCardFragment())
+                .add(R.id.container, homeCardFragment)
                 .commitAllowingStateLoss();
     }
 
