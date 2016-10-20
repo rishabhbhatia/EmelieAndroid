@@ -35,6 +35,7 @@
                     android:background="@drawable/ignore_button" />
 
                 <Button
+                    android:id="@+id/card_center_btn"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"

@@ -2,6 +2,7 @@ package com.satiate.emelie.cardslidepanel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import com.satiate.emelie.R;
 import com.satiate.emelie.models.Story;
 import com.satiate.emelie.ui.activities.HomeActivity;
+import com.satiate.emelie.ui.activities.HomeCardDetailsActivity;
 import com.satiate.emelie.utils.Const;
 import com.satiate.emelie.utils.EmelieUtilities;
 import com.special.ResideMenu.ResideMenu;
@@ -40,6 +42,8 @@ public class HomeCardFragment extends Fragment {
     Button cardLeftBtn;
     @BindView(R.id.card_right_btn)
     Button cardRightBtn;
+    @BindView(R.id.card_center_btn)
+    Button cardCenterBtn;
     @BindView(R.id.card_bottom_layout)
     LinearLayout cardBottomLayout;
     @BindView(R.id.image_slide_panel)
@@ -109,7 +113,7 @@ public class HomeCardFragment extends Fragment {
         }
     }
 
-    @OnClick({R.id.ll_home_nav, R.id.iv_home_add_story})
+    @OnClick({R.id.ll_home_nav, R.id.iv_home_add_story, R.id.card_center_btn})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_nav:
@@ -123,6 +127,14 @@ public class HomeCardFragment extends Fragment {
                 break;
             case R.id.iv_home_add_story:
                 break;
+            case R.id.card_center_btn:
+                goToDetailsScreen();
+                break;
         }
+    }
+
+    private void goToDetailsScreen()
+    {
+        homeActivity.startActivity(new Intent(homeActivity, HomeCardDetailsActivity.class));
     }
 }
