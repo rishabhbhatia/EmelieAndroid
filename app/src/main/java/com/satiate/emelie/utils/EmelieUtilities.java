@@ -1,14 +1,15 @@
 package com.satiate.emelie.utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.view.Display;
 
+import com.satiate.emelie.models.Story;
 import com.satiate.emelie.models.User;
 import com.satiate.emelie.ui.activities.HomeActivity;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -48,6 +49,33 @@ public class EmelieUtilities {
         user.setImageUrl(HomeActivity.randomImageUrl);
 
         return user;
+    }
+
+    public static ArrayList<String> generateRandomPhotoSet(int count)
+    {
+        ArrayList<String> randomPhotoSet = new ArrayList<>();
+
+        for(int i =0; i<count; i++)
+        {
+//            String photoUrl = "https://unsplash.it/"+generateRandomAge(350, 500)+"/"+generateRandomAge(300,400)+"/?image=1067";
+            String photoUrl = "http://placehold.it/"+generateRandomAge(250, 380)+"x"+generateRandomAge(100,200);
+            randomPhotoSet.add(photoUrl);
+        }
+
+        return randomPhotoSet;
+    }
+
+    public static Story generateRandomStory()
+    {
+        Story story = new Story();
+
+        story.setTitle(generateRandomStrings(6)+" "+generateRandomStrings(4));
+        story.setUser(generateRandomUser());
+        story.setCommentsCount(generateRandomAge(50, 500));
+        story.setLikesCount(generateRandomAge(2, 20));
+        story.setPhotos(generateRandomPhotoSet(40));
+
+        return story;
     }
 
     public static int getDominantColor(Bitmap bitmap)

@@ -1,15 +1,23 @@
 package com.satiate.emelie.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
 import com.satiate.emelie.R;
+import com.satiate.emelie.images.DynamicImageView;
 import com.satiate.emelie.models.Story;
+import com.satiate.emelie.utils.Const;
 
 /**
  * Created by Rishabh Bhatia on 20/10/16.
@@ -28,19 +36,33 @@ public class PhotosDetailsAdapter extends RecyclerView.Adapter<PhotosDetailsAdap
 
     @Override
     public PhotosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_photos_details, null);
-        return new PhotosViewHolder(layoutView);
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        return new PhotosViewHolder(inflater.inflate(R.layout.row_photos_details, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(PhotosViewHolder holder, int position) {
+    public void onBindViewHolder(final PhotosViewHolder holder, int position) {
 
-        holder.clear();
+//        holder.clear();
 
         String photoUrl = story.getPhotos().get(position);
 
-        Glide.with(context).load(photoUrl).into(holder.photo);
+        Glide.with(context).load(photoUrl).asBitmap().into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
+            @Override
+            public void onResourceReady(Bitmap bitmap, GlideAnimation<? super Bitmap> glideAnimation) {
+                Log.d(Const.TAG, "bitmap loaded "+bitmap.getHeight()+" & width "+bitmap.getWidth());
 
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(bitmap.getWidth(), bitmap.getHeight());
+                holder.photo.setLayoutParams(layoutParams);
+                holder.photo.setImageBitmap(bitmap);
+            }
+        });
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
     }
 
     @Override
@@ -48,13 +70,15 @@ public class PhotosDetailsAdapter extends RecyclerView.Adapter<PhotosDetailsAdap
         return story.getPhotos().size();
     }
 
-    public class PhotosViewHolder extends RecyclerView.ViewHolder {
+    class PhotosViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView photo;
+        private DynamicImageView dynamicImageView;
 
-        public PhotosViewHolder(View itemView) {
+        PhotosViewHolder(View itemView) {
             super(itemView);
             photo = (ImageView) itemView.findViewById(R.id.iv_row_photos);
+            dynamicImageView = (DynamicImageView) itemView.findViewById(R.id.div_row_photos);
         }
 
         public void clear()
