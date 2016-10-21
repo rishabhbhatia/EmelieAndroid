@@ -3,7 +3,6 @@ package com.satiate.emelie.ui.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +26,7 @@ public class PhotosFragment extends EmelieFragment {
 
     @BindView(R.id.srv_photos)
     SuperRecyclerView srvPhotos;
+
     private HomeCardDetailsActivity homeCardDetailsActivity;
 
 
@@ -46,6 +46,7 @@ public class PhotosFragment extends EmelieFragment {
         ButterKnife.bind(this, view);
 
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
         PhotosDetailsAdapter photosDetailsAdapter = new PhotosDetailsAdapter(homeCardDetailsActivity, EmelieUtilities.generateRandomStory());
         srvPhotos.setAdapter(photosDetailsAdapter);
         srvPhotos.setLayoutManager(staggeredGridLayoutManager);

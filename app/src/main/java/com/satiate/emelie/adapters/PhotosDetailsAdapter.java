@@ -3,6 +3,7 @@ package com.satiate.emelie.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,8 @@ public class PhotosDetailsAdapter extends RecyclerView.Adapter<PhotosDetailsAdap
     public void onBindViewHolder(final PhotosViewHolder holder, int position) {
 
 //        holder.clear();
+        /*StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) holder.itemView.getLayoutParams();
+        layoutParams.setFullSpan(true);*/
 
         String photoUrl = story.getPhotos().get(position);
 
