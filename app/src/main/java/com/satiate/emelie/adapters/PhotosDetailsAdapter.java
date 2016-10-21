@@ -78,7 +78,6 @@ public class PhotosDetailsAdapter extends RecyclerView.Adapter<PhotosDetailsAdap
         PhotosViewHolder(View itemView) {
             super(itemView);
             photo = (ImageView) itemView.findViewById(R.id.iv_row_photos);
-            dynamicImageView = (DynamicImageView) itemView.findViewById(R.id.div_row_photos);
         }
 
         public void clear()

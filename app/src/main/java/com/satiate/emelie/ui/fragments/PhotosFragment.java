@@ -27,8 +27,6 @@ public class PhotosFragment extends EmelieFragment {
 
     @BindView(R.id.srv_photos)
     SuperRecyclerView srvPhotos;
-    @BindView(R.id.rv_photos)
-    RecyclerView rvPhotos;
     private HomeCardDetailsActivity homeCardDetailsActivity;
 
 
@@ -49,11 +47,9 @@ public class PhotosFragment extends EmelieFragment {
 
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         PhotosDetailsAdapter photosDetailsAdapter = new PhotosDetailsAdapter(homeCardDetailsActivity, EmelieUtilities.generateRandomStory());
-//        srvPhotos.setAdapter(photosDetailsAdapter);
-//        srvPhotos.setLayoutManager(staggeredGridLayoutManager);
+        srvPhotos.setAdapter(photosDetailsAdapter);
+        srvPhotos.setLayoutManager(staggeredGridLayoutManager);
 
-        rvPhotos.setAdapter(photosDetailsAdapter);
-        rvPhotos.setLayoutManager(staggeredGridLayoutManager);
         return view;
     }
 

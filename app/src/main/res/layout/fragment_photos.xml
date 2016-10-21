@@ -13,13 +13,6 @@
         app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
         app:recyclerClipToPadding="false"
         app:recyclerPadding="16dp"
-        android:visibility="gone"
         app:scrollbarStyle="insideInset"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_photos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
 
 </LinearLayout>
