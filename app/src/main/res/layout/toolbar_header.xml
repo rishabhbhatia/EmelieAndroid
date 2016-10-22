@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="@dimen/tab_images_only_height"
+    android:id="@+id/rl_card_header"
+    android:visibility="visible"
+    android:background="@android:color/transparent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/ll_home_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:id="@+id/iv_home_nav"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_nav_other" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/iv_home_add_story"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@android:drawable/ic_menu_add" />
+
+</RelativeLayout>
