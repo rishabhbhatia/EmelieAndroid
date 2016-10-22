@@ -11,4 +11,9 @@
         <attr name="yOffsetStep" format="dimension" />
         <attr name="widthHeightRate" format="float" />
     </declare-styleable>
+
+    <declare-styleable name="QuiltView">
+        <attr name="scrollOrientation" format="string"/>
+        <attr name="childPadding" format="integer"/>
+    </declare-styleable>
 </resources>

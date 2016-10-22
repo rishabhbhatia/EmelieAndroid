@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.satiate.emelie.R;
 import com.satiate.emelie.utils.Const;
+import com.satiate.emelie.utils.MyExceptionHandler;
 
 import java.util.List;
 
@@ -23,6 +24,9 @@ public class EmelieActivity extends AppCompatActivity implements EmelieActivityI
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Custom exception handler
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this,
+                EmelieActivity.class));
     }
 
     @Override
