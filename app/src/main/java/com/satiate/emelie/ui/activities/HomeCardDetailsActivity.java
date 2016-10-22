@@ -9,11 +9,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.satiate.emelie.R;
 import com.satiate.emelie.adapters.PhotosDetailsHorizontalPhotoAdapter;
+import com.satiate.emelie.adapters.PhotosDetailsVerticalPhotoAdapter;
 import com.satiate.emelie.base.EmelieActivity;
 import com.satiate.emelie.utils.EmelieUtilities;
 
@@ -70,7 +72,7 @@ public class HomeCardDetailsActivity extends EmelieActivity implements TabLayout
 
         tlCardDetails.setupWithViewPager(vpCardDetails);*/
 
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         LinearLayoutManager recommendedLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
 
         rvDetails.setLayoutManager(mLayoutManager);
@@ -78,7 +80,11 @@ public class HomeCardDetailsActivity extends EmelieActivity implements TabLayout
 
         PhotosDetailsHorizontalPhotoAdapter photosDetailsHorizontalPhotoAdapter = new PhotosDetailsHorizontalPhotoAdapter(
                 HomeCardDetailsActivity.this, EmelieUtilities.generateRandomStory().getPhotos());
+        PhotosDetailsVerticalPhotoAdapter photosDetailsVerticalPhotoAdapter = new PhotosDetailsVerticalPhotoAdapter(
+                HomeCardDetailsActivity.this, EmelieUtilities.generateRandomStory().getPhotos());
+
         rvDetailsHorizontalPhoto.setAdapter(photosDetailsHorizontalPhotoAdapter);
+        rvDetails.setAdapter(photosDetailsVerticalPhotoAdapter);
     }
 
     private void adjustAppBarSize() {

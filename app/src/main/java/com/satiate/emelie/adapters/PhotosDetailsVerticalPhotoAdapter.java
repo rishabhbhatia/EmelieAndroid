@@ -18,29 +18,28 @@ import java.util.ArrayList;
  * Created by Rishabh Bhatia on 23/10/16.
  */
 
-public class PhotosDetailsHorizontalPhotoAdapter extends RecyclerView.Adapter<PhotosDetailsHorizontalPhotoAdapter.PhotosViewHolder> {
+public class PhotosDetailsVerticalPhotoAdapter extends RecyclerView.Adapter<PhotosDetailsVerticalPhotoAdapter.PhotosViewHolder> {
 
     private Context context;
     private ArrayList<String> photoUrls;
 
-    public PhotosDetailsHorizontalPhotoAdapter(Context context, ArrayList<String> photoUrls) {
+    public PhotosDetailsVerticalPhotoAdapter(Context context, ArrayList<String> photoUrls) {
         this.context = context;
         this.photoUrls = photoUrls;
     }
 
     @Override
-    public PhotosDetailsHorizontalPhotoAdapter.PhotosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PhotosDetailsVerticalPhotoAdapter.PhotosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        return  new PhotosViewHolder(layoutInflater.inflate(R.layout.row_photos_details_horizontal, parent, false));
+        return  new PhotosViewHolder(layoutInflater.inflate(R.layout.row_photos_details_vertical, parent, false));
 
     }
 
     @Override
-    public void onBindViewHolder(PhotosDetailsHorizontalPhotoAdapter.PhotosViewHolder holder, int position) {
+    public void onBindViewHolder(PhotosDetailsVerticalPhotoAdapter.PhotosViewHolder holder, int position) {
 
         String photoUrl = photoUrls.get(position);
         Glide.with(context).load(photoUrl).crossFade().into(holder.ivPhoto);
-
 
         animate(holder);
     }
@@ -51,7 +50,7 @@ public class PhotosDetailsHorizontalPhotoAdapter extends RecyclerView.Adapter<Ph
     }
 
     public void animate(RecyclerView.ViewHolder viewHolder) {
-        final Animation animAnticipateOvershoot = AnimationUtils.loadAnimation(context, R.anim.bounce);
+        final Animation animAnticipateOvershoot = AnimationUtils.loadAnimation(context, R.anim.overshoot);
         viewHolder.itemView.setAnimation(animAnticipateOvershoot);
     }
 
@@ -61,8 +60,9 @@ public class PhotosDetailsHorizontalPhotoAdapter extends RecyclerView.Adapter<Ph
 
         public PhotosViewHolder(View itemView) {
             super(itemView);
-            ivPhoto = (ImageView) itemView.findViewById(R.id.iv_row_photos);
+            ivPhoto = (ImageView) itemView.findViewById(R.id.iv_row_photos_vertical);
         }
     }
 }
+
 

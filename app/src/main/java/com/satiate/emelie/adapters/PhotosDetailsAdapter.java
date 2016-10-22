@@ -3,13 +3,11 @@ package com.satiate.emelie.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -39,7 +37,7 @@ public class PhotosDetailsAdapter extends RecyclerView.Adapter<PhotosDetailsAdap
     public PhotosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        return new PhotosViewHolder(inflater.inflate(R.layout.row_photos_details, parent, false));
+        return new PhotosViewHolder(inflater.inflate(R.layout.row_photos_details_horizontal, parent, false));
     }
 
     @Override

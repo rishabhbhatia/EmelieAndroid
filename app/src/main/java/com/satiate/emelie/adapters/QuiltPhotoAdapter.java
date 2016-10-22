@@ -2,11 +2,9 @@ package com.satiate.emelie.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.widget.GridLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -54,7 +52,7 @@ public class QuiltPhotoAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View view = inflater.inflate(R.layout.row_photos_details, parent, false);
+        final View view = inflater.inflate(R.layout.row_photos_details_horizontal, parent, false);
         final ImageView imageView = (ImageView) view.findViewById(R.id.iv_row_photos);
         final RelativeLayout rvPhotos = (RelativeLayout) view.findViewById(R.id.rv_row_photos);
 
