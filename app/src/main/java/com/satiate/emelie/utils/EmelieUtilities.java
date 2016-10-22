@@ -57,7 +57,7 @@ public class EmelieUtilities {
 
         for(int i =0; i<count; i++)
         {
-            String photoUrl = "https://unsplash.it/"+generateRandomAge(350, 450)+"/"+generateRandomAge(600,800)+"/?random";
+            String photoUrl = "https://unsplash.it/"+generateRandomAge(550, 750)+"/"+generateRandomAge(300,400)+"/?random";
 //            String photoUrl = "http://placehold.it/"+generateRandomAge(250, 380)+"x"+generateRandomAge(100,200);
             randomPhotoSet.add(photoUrl);
         }

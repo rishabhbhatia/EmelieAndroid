@@ -51,13 +51,13 @@ public class PhotosDetailsAdapter extends RecyclerView.Adapter<PhotosDetailsAdap
 
         String photoUrl = story.getPhotos().get(position);
 
-        Glide.with(context).load(photoUrl).asBitmap().into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
+        Glide.with(context).load(photoUrl).asBitmap().placeholder(R.drawable.background).into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
             @Override
             public void onResourceReady(Bitmap bitmap, GlideAnimation<? super Bitmap> glideAnimation) {
                 Log.d(Const.TAG, "bitmap loaded "+bitmap.getHeight()+" & width "+bitmap.getWidth());
 
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(bitmap.getWidth(), bitmap.getHeight());
-                holder.photo.setLayoutParams(layoutParams);
+               /* RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(bitmap.getWidth(), bitmap.getHeight());
+                holder.photo.setLayoutParams(layoutParams);*/
                 holder.photo.setImageBitmap(bitmap);
             }
         });

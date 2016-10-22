@@ -3,6 +3,7 @@ package com.satiate.emelie.ui.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.satiate.emelie.R;
+import com.satiate.emelie.adapters.PhotosDetailsAdapter;
 import com.satiate.emelie.adapters.QuiltPhotoAdapter;
 import com.satiate.emelie.base.EmelieFragment;
 import com.satiate.emelie.quiltview.QuiltView;
@@ -61,16 +63,14 @@ public class PhotosFragment extends EmelieFragment {
 
         ivHomeNav.setImageResource(R.drawable.ic_back);
         ivHomeAddStory.setVisibility(View.GONE);
-/*
+
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
+//        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         PhotosDetailsAdapter photosDetailsAdapter = new PhotosDetailsAdapter(homeCardDetailsActivity, EmelieUtilities.generateRandomStory());
         srvPhotos.setAdapter(photosDetailsAdapter);
-        srvPhotos.setLayoutManager(staggeredGridLayoutManager);*/
+        srvPhotos.setLayoutManager(staggeredGridLayoutManager);
 
-//        quiltView.setChildPadding(5);
-//        quiltView.setOrientation(true);
-        quiltView.setAdapter(new QuiltPhotoAdapter(homeCardDetailsActivity, EmelieUtilities.generateRandomStory()));
+//        quiltView.setAdapter(new QuiltPhotoAdapter(homeCardDetailsActivity, EmelieUtilities.generateRandomStory()));
         return view;
     }
 
