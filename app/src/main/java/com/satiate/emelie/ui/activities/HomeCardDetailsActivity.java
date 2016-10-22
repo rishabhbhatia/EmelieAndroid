@@ -2,17 +2,17 @@ package com.satiate.emelie.ui.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.widget.RelativeLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.satiate.emelie.R;
 import com.satiate.emelie.base.EmelieActivity;
-import com.satiate.emelie.ui.fragments.JourneyFragment;
-import com.satiate.emelie.ui.fragments.PhotosFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,21 +25,35 @@ import butterknife.ButterKnife;
  */
 
 public class HomeCardDetailsActivity extends EmelieActivity implements TabLayout.OnTabSelectedListener {
+    @BindView(R.id.rv_details_horizontal_photo)
+    RecyclerView rvDetailsHorizontalPhoto;
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+    @BindView(R.id.appbar)
+    AppBarLayout appbar;
+    @BindView(R.id.rv_details)
+    RecyclerView rvDetails;
 
-    @BindView(R.id.vp_card_details)
+    /*@BindView(R.id.vp_card_details)
     ViewPager vpCardDetails;
     @BindView(R.id.tl_card_details)
     TabLayout tlCardDetails;
     @BindView(R.id.main_layout)
-    RelativeLayout mainLayout;
+    RelativeLayout mainLayout;*/
+
+    private String[] mRecyclerViewValues =
+            new String[]{"Apple Pie", "Banana Bread", "Cupcake", "Donut", "Eclair", "Froyo",
+                    "Gingerbread", "Honeycomb", "Ice Cream Sandwich", "Jelly Bean", "KitKat",
+                    "Lollipop", "M preview"};
+    private String[] mRecommendedFoodItems = new String[]{"Chicken Biryani",     "Mutton Biryani", "Veg Biryani","Veg Fried Rice"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_card_details);
+        setContentView(R.layout.activity_home_detail_horizontal_coordinator_design);
         ButterKnife.bind(this);
 
-        vpCardDetails = (ViewPager) findViewById(R.id.vp_card_details);
+       /* vpCardDetails = (ViewPager) findViewById(R.id.vp_card_details);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -49,7 +63,13 @@ public class HomeCardDetailsActivity extends EmelieActivity implements TabLayout
         vpCardDetails.setAdapter(adapter);
         tlCardDetails.addOnTabSelectedListener(this);
 
-        tlCardDetails.setupWithViewPager(vpCardDetails);
+        tlCardDetails.setupWithViewPager(vpCardDetails);*/
+
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager recommendedLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
+
+        rvDetails.setLayoutManager(mLayoutManager);
+        rvDetailsHorizontalPhoto.setLayoutManager(recommendedLayoutManager);
     }
 
     @Override
