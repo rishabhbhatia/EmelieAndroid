@@ -1,6 +1,7 @@
 package com.satiate.emelie.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.view.Display;
@@ -100,6 +101,13 @@ public class EmelieUtilities {
         Point size = new Point();
         display.getSize(size);
         return size.x;
+    }
+
+    public static int getScreenPixels(Context context, int dps)
+    {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        int pixels = (int) (dps * scale + 0.5f);
+        return pixels;
     }
 
 }

@@ -4,15 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.satiate.emelie.R;
+import com.satiate.emelie.adapters.PhotosDetailsHorizontalPhotoAdapter;
 import com.satiate.emelie.base.EmelieActivity;
+import com.satiate.emelie.utils.Const;
+import com.satiate.emelie.utils.EmelieUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +58,8 @@ public class HomeCardDetailsActivity extends EmelieActivity implements TabLayout
         setContentView(R.layout.activity_home_detail_horizontal_coordinator_design);
         ButterKnife.bind(this);
 
+        adjustAppBarSize();
+
        /* vpCardDetails = (ViewPager) findViewById(R.id.vp_card_details);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -70,6 +77,16 @@ public class HomeCardDetailsActivity extends EmelieActivity implements TabLayout
 
         rvDetails.setLayoutManager(mLayoutManager);
         rvDetailsHorizontalPhoto.setLayoutManager(recommendedLayoutManager);
+
+        PhotosDetailsHorizontalPhotoAdapter photosDetailsHorizontalPhotoAdapter = new PhotosDetailsHorizontalPhotoAdapter(
+                HomeCardDetailsActivity.this, EmelieUtilities.generateRandomStory().getPhotos());
+        rvDetailsHorizontalPhoto.setAdapter(photosDetailsHorizontalPhotoAdapter);
+    }
+
+    private void adjustAppBarSize() {
+        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)appbar.getLayoutParams();
+        int pixels = EmelieUtilities.getScreenPixels(HomeCardDetailsActivity.this, EmelieUtilities.getScreenHeight(HomeCardDetailsActivity.this));
+        lp.height = pixels/7;
     }
 
     @Override
