@@ -11,12 +11,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.satiate.emelie.R;
 import com.satiate.emelie.adapters.PhotosDetailsHorizontalPhotoAdapter;
 import com.satiate.emelie.base.EmelieActivity;
-import com.satiate.emelie.utils.Const;
 import com.satiate.emelie.utils.EmelieUtilities;
 
 import java.util.ArrayList;
